@@ -1,6 +1,7 @@
 project:
   type: website
-
+  output-dir: docs
+  
 website:
   title: "Digital Epidemiology Workshop, September 2023"
   navbar:
