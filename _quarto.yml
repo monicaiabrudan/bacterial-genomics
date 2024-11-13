@@ -1,0 +1,58 @@
+project:
+  type: website
+
+website:
+  title: "Digital Epidemiology Workshop, September 2023"
+  navbar:
+    logo: /img/cgps.jpg
+    left:
+      - href: index.qmd
+        text: Home
+      - href: agenda.qmd
+        text: Agenda
+      - href: Syllabus.qmd
+        text: Syllabus
+      - text: Training materials
+        menu:
+          - definitions.qmd
+          - use-cases.qmd
+          - stakeholders-mapping.qmd
+          - hands-on/exercise.qmd
+          - microreact/microreact.qmd
+          - data-flo/data-flo.qmd
+          - resources.qmd
+
+
+  page-footer: 
+    left: "This work is licensed under a Creative Commons Attribution 4.0 International License. Reuse is encouraged with acknowledgement" 
+    right: 
+      - icon: twitter 
+        href: https://twitter.com/TheCGPS
+
+  sidebar:
+    style: "docked"
+    search: true
+    collapse-level: 1
+    contents: 
+      - section: "Data-flo step-by-step tutorial"
+        contents:
+          - data-flo/data-flo.qmd
+      - section: "Microreact step-by-step tutorial"
+        contents:
+          - microreact/microreact.qmd
+format:
+  html:
+    theme:
+      light: [materia, theme-light.scss]
+      dark: [materia, theme-dark.scss]
+    anchor-sections: true
+
+editor: visual
+
+execute:
+  freeze: auto
+  
+sidebar:
+  contents: auto
+
+link-external-newwindow: true

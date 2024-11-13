@@ -1,0 +1,7 @@
+---
+title: "Agenda"
+---
+
+The detailed agenda can be found [here](img/Agenda_CADA.pdf)
+
+![Workshop workflow](img/workflow1.jpg){width="80%"}

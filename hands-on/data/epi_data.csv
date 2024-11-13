@@ -1,0 +1,41 @@
+id,ST,City,Hospital,Collection Date,Source,Infection Type,Sex,Age,Ward
+CNRVC170168,258,Cartagena,"Hospital el Pozon, Cartagena, Colombia",11/08/2023,Clinical,UTI,M,75,2
+CNRVC170170,258,Cartagena,"Hospital Universitario del Caribe, Cartagena, Colombia",27/07/2023,Clinical,UTI,M,88,
+CNRVC170173,258,Cartagena,"Nuevo Hospital Bocagrande, Cartagena, Colombia",10/07/2023,Clinical,UTI,F,79,2
+CNRVC170174,258,Cartagena,"Hospital Universitario del Caribe, Cartagena, Colombia",16/08/2023,Clinical,sepsis,M,76,
+CNRVC170175,258,Cartagena,"Clinica Cartagena del Mar, Cartagena Colombia",14/08/2023,Clinical,UTI,M,71,
+CNRVC170176,258,Cartagena,"Hospital el Pozon, Cartagena, Colombia",02/07/2023,Clinical,UTI,F,83,2
+CNRVC170177,258,Cartagena,"Clínica La Ermita de Cartagena, Cartagena, Colombia",23/08/2022,Clinical,,F,70,
+CNRVC170178,258,Cartagena,"Clínica La Ermita de Cartagena, Cartagena, Colombia",03/07/2022,Clinical,,M,79,
+CNRVC170179,258,Cartagena,"Clínica La Ermita de Cartagena, Cartagena, Colombia",12/08/2022,Clinical,,M,76,
+CNRVC170180,258,Cartagena,"Clínica La Ermita de Cartagena, Cartagena, Colombia",04/08/2022,Clinical,,M,85,
+CNRVC170182,258,Cartagena,"Nuevo Hospital Bocagrande, Cartagena, Colombia",13/07/2023,Clinical,UTI,F,71,1
+CNRVC170183,258,Cartagena,"Hospital Naval de Cartagena, Cartagena, Colombia",19/07/2023,Clinical,UTI,M,70,
+CNRVC170184,258,Cartagena,"Hospital Universitario del Caribe, Cartagena, Colombia",05/08/2023,Clinical,UTI,F,95,
+CNRVC170185,258,Cartagena,"Hospital Sanatorio San Pablo, Cartagena, Colombia",03/08/2023,Clinical,UTI,M,73,2
+CNRVC170186,258,Cartagena,"Clínica La Ermita de Cartagena, Cartagena, Colombia",13/07/2023,Clinical,UTI,F,79,
+CNRVC170187,258,Cartagena,"Hospital Naval de Cartagena, Cartagena, Colombia",15/08/2023,Clinical,UTI,M,88,1
+CNRVC170188,258,Cartagena,"Clínica La Ermita de Cartagena, Cartagena, Colombia",30/07/2023,Clinical,meningitis,M,78,
+CNRVC170189,258,Cartagena,"Clínica La Ermita de Cartagena, Cartagena, Colombia",02/08/2023,Clinical,UTI,F,77,
+CNRVC170190,258,Cartagena,"Hospital Sanatorio San Pablo, Cartagena, Colombia",03/08/2023,Clinical,UTI,F,75,2
+CNRVC170191,258,Cartagena,"EPS Sanitas Pie de la Popa, Cartagena, Colombia",19/07/2023,Clinical,UTI,M,75,1
+CNRVC170192,258,Cartagena,"Hospital Sanatorio San Pablo, Cartagena, Colombia",03/08/2023,Clinical,UTI,F,79,2
+CNRVC170193,258,Cartagena,"Hospital el Pozon, Cartagena, Colombia",18/08/2023,Clinical,UTI,M,79,
+CNRVC170194,258,Cartagena,"Nuevo Hospital Bocagrande, Cartagena, Colombia",11/08/2023,Clinical,UTI,F,99,2
+CNRVC170195,258,Cartagena,"Hospital Naval de Cartagena, Cartagena, Colombia",18/07/2023,Clinical,UTI,M,80,1
+CNRVC170196,258,Cartagena,"EPS Sanitas Pie de la Popa, Cartagena, Colombia",17/08/2023,Clinical,UTI,M,75,2
+CNRVC170197,258,Cartagena,"Hospital el Pozon, Cartagena, Colombia",09/08/2023,Clinical,sepsis,F,97,
+CNRVC170198,258,Cartagena,"Hospital Universitario del Caribe, Cartagena, Colombia",30/07/2023,Clinical,UTI,F,73,1
+CNRVC170199,258,Cartagena,"Hospital Naval de Cartagena, Cartagena, Colombia",23/07/2023,Clinical,UTI,M,71,2
+CNRVC170200,258,Cartagena,"EPS Sanitas Pie de la Popa, Cartagena, Colombia",06/08/2023,Clinical,sepsis,F,81,
+CNRVC170201,258,Cartagena,"Hospital el Pozon, Cartagena, Colombia",14/08/2023,Clinical,UTI,M,79,2
+CNRVC170202,258,Cartagena,"Hospital Universitario del Caribe, Cartagena, Colombia",29/07/2023,Clinical,UTI,F,89,
+CNRVC170203,258,Cartagena,"EPS Sanitas Pie de la Popa, Cartagena, Colombia",16/07/2023,Clinical,UTI,M,74,2
+CNRVC170204,258,Cartagena,"Nuevo Hospital Bocagrande, Cartagena, Colombia",21/08/2023,Clinical,UTI,M,70,
+CNRVC170205,258,Cartagena,"Hospital Universitario del Caribe, Cartagena, Colombia",09/08/2023,Clinical,UTI,F,79,2
+CNRVC170206,258,Cartagena,"Hospital el Pozon, Cartagena, Colombia",11/07/2022,Clinical,,F,71,
+CNRVC170207,258,Cartagena,"Clinica Cartagena del Mar, Cartagena Colombia",18/07/2022,Clinical,,F,70,
+CNRVC170208,258,Cartagena,"Hospital Universitario del Caribe, Cartagena, Colombia",15/07/2023,Clinical,UTI,M,74,1
+CNRVC170240,258,Cartagena,"Hospital el Pozon, Cartagena, Colombia",07/07/2023,Clinical,UTI,M,82,
+CNRVC170241,258,Cartagena,"Hospital el Pozon, Cartagena, Colombia",04/07/2023,Clinical, ,F,84,
+CNRVC170242,258,Cartagena,"Hospital el Pozon, Cartagena, Colombia",07/07/2023,Clinical,UTI,M,84,1
