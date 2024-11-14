@@ -3,9 +3,8 @@ project:
   output-dir: docs
   
 website:
-  title: "Digital Epidemiology Workshop, September 2023"
+  title: "Bacterial Genomics, November 2024"
   navbar:
-    logo: /img/cgps.jpg
     left:
       - href: index.qmd
         text: Home
@@ -13,6 +12,7 @@ website:
         text: Agenda
       - text: Training materials
         menu:
+          - module1/module1.qmd
           - definitions.qmd
           - microreact/microreact.qmd
           - data-flo/data-flo.qmd
