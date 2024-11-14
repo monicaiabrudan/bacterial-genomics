@@ -5,13 +5,3 @@ title: "Resources"
 The materials provided in this repository are FREE to use.
 
 This work is licensed under a Creative Commons Attribution 4.0 International License. Reuse is encouraged with acknowledgement.
-
-Participant feedback form can be accessed here:
-
-![](img/participant%20feedback-qr-code.png){fig-align="center" width="232"}
-
-![](img/BDI_logo.png){width="50%"}<https://forms.gle/w5qodeSU1Xzyir7p6>
-
-Github is cool
-
-![](img/digitalepi.jpg)

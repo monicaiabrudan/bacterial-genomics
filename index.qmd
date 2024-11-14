@@ -1,17 +1,3 @@
 ---
 title: ""
 ---
-
-This page is a repository for training resources designed and developed for the Digital Epidemiology Workshop, Cartagena, Colombia, 12-13 September 2023.
-
-The workshop is part of the annual meeting of the [NIHR Global Health Research Unit on Genomic Surveillance of AMR](https://ghru.pathogensurveillance.net/) and is funded through an [**NIHR Global Health Research Cohort Academic Development Award (GHR CADA**](https://www.nihr.ac.uk/documents/nihr-global-health-research-cohort-academic-development-award-ghr-cada-round-2-2022-guidance-notes/32064)**).**
-
-***The materials provided in this repository are FREE to use.*** ***This work is licensed under a Creative Commons Attribution 4.0 International License. Reuse is encouraged with acknowledgement.***
-
-Link to [Syllabus](Syllabus.qmd)
-
-Link to [Training materials](resources.qmd)
-
-Link to [Microreact](microreact/microreact.qmd) tutorials
-
-Link to [Data-flo](data-flo/data-flo.qmd) tutorials

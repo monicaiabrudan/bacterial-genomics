@@ -11,14 +11,9 @@ website:
         text: Home
       - href: agenda.qmd
         text: Agenda
-      - href: Syllabus.qmd
-        text: Syllabus
       - text: Training materials
         menu:
           - definitions.qmd
-          - use-cases.qmd
-          - stakeholders-mapping.qmd
-          - hands-on/exercise.qmd
           - microreact/microreact.qmd
           - data-flo/data-flo.qmd
           - resources.qmd
@@ -26,9 +21,6 @@ website:
 
   page-footer: 
     left: "This work is licensed under a Creative Commons Attribution 4.0 International License. Reuse is encouraged with acknowledgement" 
-    right: 
-      - icon: twitter 
-        href: https://twitter.com/TheCGPS
 
   sidebar:
     style: "docked"
