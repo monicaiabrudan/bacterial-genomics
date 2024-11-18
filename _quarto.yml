@@ -3,7 +3,7 @@ project:
   output-dir: docs
   
 website:
-  title: "Bacterial Genomics, November 2024"
+  title: "Bacterial Genomics, Cluj-Napoca, November 2024"
   navbar:
     left:
       - href: index.qmd
@@ -13,7 +13,8 @@ website:
       - text: Training materials
         menu:
           - module1/module1.qmd
-          - definitions.qmd
+          - module2/module2.qmd
+          - module3/module3.qmd
           - microreact/microreact.qmd
           - data-flo/data-flo.qmd
           - resources.qmd

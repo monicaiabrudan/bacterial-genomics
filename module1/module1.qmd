@@ -1,7 +1,8 @@
 ---
 title: "Module 1"
 ---
-#### Module 1: Set up your bioinformatics working environment
+
+### Module 1: Set up your bioinformatics working environment
 
 ### Connect to your Amazon EC2 instance
 
@@ -31,7 +32,7 @@ Check the configuration files:
 
 Edit the ***.profile*** file and add the paths in the **PATH** variable
 
-Eg: 
+Eg:
 
 `vi ~/.profile`
 
@@ -39,89 +40,149 @@ Eg: 
 
 ### Configure your Amazon EC2 Ubuntu instance
 
-#### Install FastQC
+Your Amazon EC2 Ubuntu instance should be ready to go right away. However, in order to go through the next modules of this course, you will need to install the list of tools below.
 
-#### Install Bactinspector
+First, familiarise yourselves with the tools. Understand what is their role in an NGS pipeline, what is the required input and the expected output. Who developed them and when? Do they have dependencies?
 
-#### Install the Velvet assembler
+**For each tool that you attempt to install, write down the steps you took to achieve that in the [Shared student observations file](https://docs.google.com/document/d/1H_38XC9RgfFoWZ4K-6pw5xqFMhSY7hj4WLJPPQgsqOA/edit?usp=sharing).**
 
-Velvet is installed here: 
+#### FastQC
+
+<https://www.bioinformatics.babraham.ac.uk/projects/fastqc/>
+
+#### Bactinspector
+
+<https://gitlab.com/antunderwood/bactinspector>
+
+#### Velvet assembler
+
+<https://github.com/dzerbino/velvet>
+
+```{=html}
+<!--  Velvet is installed here: 
 
 `/usr/share/miniconda/pkgs/velvet-1.2.10-h5bf99c6_4/bin/velveth`
 
-Add */usr/share/miniconda/pkgs/velvet-1.2.10-h5bf99c6_4/bin/* to **PATH**
+Add */usr/share/miniconda/pkgs/velvet-1.2.10-h5bf99c6_4/bin/* to **PATH** -->
+```
 
-#### Install ACT and Artemis
+#### ACT and Artemis
 
-`conda install bioconda::velvet`
+<https://www.sanger.ac.uk/tool/artemis-comparison-tool-act/>
 
-#### Install Unicycler 
+<!-- `conda install bioconda::velvet` -->
 
-Manual page: <https://github.com/rrwick/Unicycler?tab=readme-ov-file#build-and-run-without-installation>
+#### Unicycler 
 
-`git clone https://github.com/rrwick/Unicycler.git`
+<https://github.com/rrwick/Unicycler?tab=readme-ov-file#build-and-run-without-installation>
+
+```{=html}
+<!-- `git clone https://github.com/rrwick/Unicycler.git`
 
 `cd Unicycler`
 
-`python3 setup.py install`
+`python3 setup.py install` -->
+```
 
-#### Install SPADES
+#### SPADES
 
-Manual page: <https://github.com/ablab/spades>
+<https://github.com/ablab/spades>
 
-`wget https://github.com/ablab/spades/releases/download/v4.0.0/SPAdes-4.0.0-Linux.tar.gz`
+```{=html}
+<!-- `wget https://github.com/ablab/spades/releases/download/v4.0.0/SPAdes-4.0.0-Linux.tar.gz`
 
-`tar -xzf SPAdes-4.0.0-Linux.tar.gz`
+[//]: `tar -xzf SPAdes-4.0.0-Linux.tar.gz`
 
-`cd SPAdes-4.0.0-Linux/bin/`
+[//]:`cd SPAdes-4.0.0-Linux/bin/` 
+
+Add spades.py to \~/.profile -->
+```
+
+#### Quast
+
+<https://github.com/ablab/quast>
+
+```{=html}
+<!-- [//]:`conda install -c bioconda quast`
+
+[//]: Eg on how to run Quast
+
+[//]:`quast.py test_data/contigs_1.fasta \`
+
+[//]:`test_data/contigs_2.fasta \`
+
+[//]:`-r test_data/reference.fasta.gz \`
+
+[//]:`-g test_data/genes.txt \`
+
+[//]:`-1 test_data/reads1.fastq.gz -2 test_data/reads2.fastq.gz \`
+
+[//]:`-o quast_test_output`
+
+[//]: Quast path: */home/ubuntu/Software/quast/build/scripts-3.8/quast.py* -->
+```
+
+#### brew
+
+<https://docs.brew.sh/Homebrew-on-Linux>
+
+```{=html}
+<!-- [//]:`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+
+[//]:
+[//]:`echo >> /home/ubuntu/.zshrc`
+
+[//]:`echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/ubuntu/.zshrc`
+
+`eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"` -->
+```
+
+#### makeblastdb and tblastn
+
+<https://www.ncbi.nlm.nih.gov/books/NBK569861/>
+
+**prokka**
+
+<https://github.com/tseemann/prokka>
+
+```{=html}
+<!-- #### Install prokka
 
 \
-Add spades.py to \~/.profile 
+`brew install brewsci/bio/prokka` -->
+```
 
-#### Install Quast
+#### resfinder
 
-`conda install -c bioconda quast`
+<https://github.com/cadms/resfinder>
 
-\
-Eg on how to run Quast
-
-`quast.py test_data/contigs_1.fasta \`
-
-`test_data/contigs_2.fasta \`
-
-`-r test_data/reference.fasta.gz \`
-
-`-g test_data/genes.txt \`
-
-`-1 test_data/reads1.fastq.gz -2 test_data/reads2.fastq.gz \`
-
-`-o quast_test_output`
-
-Quast path: */home/ubuntu/Software/quast/build/scripts-3.8/quast.py* 
-
-#### Install brew
-
-`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
-
-\
-`echo >> /home/ubuntu/.zshrc`
-
-`echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/ubuntu/.zshrc`
-
-`eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"`
-
-Install makeblastdb and tblastn
-
-#### Install prokka
-
-\
-`brew install brewsci/bio/prokka`
-
-#### Install resfinder
-
-`pip install resfinder`
+```{=html}
+<!-- `pip install resfinder`
 
 \
 `python /home/ubuntu/.local/lib/python3.9/site-packages/resfinder/run_resfinder.py`
 
-`/usr/share/doc/ncbi-blast+`
+`/usr/share/doc/ncbi-blast+` -->
+```
+
+**ARIBA**
+
+<https://sanger-pathogens.github.io/ariba/>
+
+Configure the MLST calling, Resfinder and CARD databases.
+
+`ariba pubmlstget "Staphylococcus aureus" get_mlst`
+
+`ariba getref resfinder out.resfinder`
+
+`ariba prepareref -f out.resfinder.fa -m out.resfinder.tsv out.resfinder.prepareref`
+
+`ariba getref card out.card`
+
+`ariba prepareref -f out.card.fa -m out.card.tsv out.card.prepareref`
+
+How to run ARIBA
+
+```         
+ariba run out.ncbi.prepareref reads1.fastq reads2.fastq out.run
+```

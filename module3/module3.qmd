@@ -1,0 +1,30 @@
+---
+title: "Module 3"
+---
+
+### Bacterial genome assembly data analysis
+
+### Tools to be used in Module 3
+
+**ARIBA**
+
+ARIBA is a tool that identifies antibiotic resistance genes by running local assemblies. It can also be used for MLST calling.
+
+The input is a FASTA file of reference sequences (can be a mix of genes and noncoding sequences) and paired sequencing reads. ARIBA reports which of the reference sequences were found, plus detailed information on the quality of the assemblies and any variants between the sequencing reads and the reference sequences.
+
+Find out more at <https://github.com/sanger-pathogens/ariba/wiki>
+
+#### Multi Locus Sequence Typing (MLST)
+
+-   what is MLST, role and applications
+
+<https://github.com/sanger-pathogens/ariba/wiki/MLST-calling-with-ARIBA>
+
+#### AMR determinants
+
+1.  In your virtual machine, navigate to the folder */home/ubuntu/Data/all_fastas*, where you will find all the assemblies for this study.
+2.  Run ARIBA on the samples Resfinder and CARD
+
+Visualise the results.
+
+Compare Resfinder and CARD results.
