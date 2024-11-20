@@ -3,7 +3,7 @@ project:
   output-dir: docs
   
 website:
-  title: "Bacterial Genomics, Cluj-Napoca, November 2024"
+  title: "Bioinformatic methods for microbial genomics and transcriptomics, Cluj-Napoca, November 2024"
   navbar:
     left:
       - href: index.qmd
@@ -13,11 +13,11 @@ website:
       - text: Training materials
         menu:
           - module1/module1.qmd
-          - module2/module2.qmd
-          - module3/module3.qmd
-          - microreact/microreact.qmd
-          - data-flo/data-flo.qmd
-          - resources.qmd
+          #- module2/module2.qmd
+          #- module3/module3.qmd
+          #- microreact/microreact.qmd
+          #- data-flo/data-flo.qmd
+          #- resources.qmd
 
 
   page-footer: 
@@ -27,13 +27,13 @@ website:
     style: "docked"
     search: true
     collapse-level: 1
-    contents: 
-      - section: "Data-flo step-by-step tutorial"
-        contents:
-          - data-flo/data-flo.qmd
-      - section: "Microreact step-by-step tutorial"
-        contents:
-          - microreact/microreact.qmd
+    #contents: 
+      #- section: "Data-flo step-by-step tutorial"
+      #  contents:
+      #    - data-flo/data-flo.qmd
+      #- section: "Microreact step-by-step tutorial"
+      #  contents:
+      #    - microreact/microreact.qmd
 format:
   html:
     theme:

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Module 1 – Bacterial Genomics, Cluj-Napoca, November 2024</title>
+<title>Module 1 – Bioinformatic methods for microbial genomics and transcriptomics, Cluj-Napoca, November 2024</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -80,7 +80,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../index.html">
-    <span class="navbar-title">Bacterial Genomics, Cluj-Napoca, November 2024</span>
+    <span class="navbar-title">Bioinformatic methods for microbial genomics and transcriptomics, Cluj-Napoca, November 2024</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -105,26 +105,6 @@ ul.task-list li input[type="checkbox"] {
         <li>
     <a class="dropdown-item" href="../module1/module1.html">
  <span class="dropdown-text">Module 1</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../module2/module2.html">
- <span class="dropdown-text">Module 2</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../module3/module3.html">
- <span class="dropdown-text">Module 3</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../microreact/microreact.html">
- <span class="dropdown-text">Microreact tutorial</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../data-flo/data-flo.html">
- <span class="dropdown-text">Data-flo tutorial</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../resources.html">
- <span class="dropdown-text">Resources</span></a>
   </li>  
     </ul>
   </li>
@@ -158,44 +138,6 @@ ul.task-list li input[type="checkbox"] {
         <div id="quarto-search" class="" title="Search"></div>
         </div>
         </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
- <span class="menu-text">Data-flo step-by-step tutorial</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../data-flo/data-flo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data-flo tutorial</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
- <span class="menu-text">Microreact step-by-step tutorial</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../microreact/microreact.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Microreact tutorial</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-    </ul>
-    </div>
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
@@ -225,21 +167,31 @@ ul.task-list li input[type="checkbox"] {
 <section id="module-1-set-up-your-bioinformatics-working-environment" class="level3">
 <h3 class="anchored" data-anchor-id="module-1-set-up-your-bioinformatics-working-environment">Module 1: Set up your bioinformatics working environment</h3>
 </section>
-<section id="connect-to-your-amazon-ec2-instance" class="level3">
-<h3 class="anchored" data-anchor-id="connect-to-your-amazon-ec2-instance">Connect to your Amazon EC2 instance</h3>
-<p>Type the Public IPv4 in your browser address bar, <em>eg: <a href="https://18.169.193.251/" class="uri">https://18.169.193.251/</a></em></p>
-<p>The username is <em>ubuntu</em>, and the password the instance ID, <em>eg i-07833a8ccc08c1030</em></p>
-<p>Once you log in, you should see the welcome screen.</p>
-</section>
-<section id="how-to-connect-to-your-amazon-ec2-instance-via-ssh" class="level3">
-<h3 class="anchored" data-anchor-id="how-to-connect-to-your-amazon-ec2-instance-via-ssh">How to connect to your Amazon EC2 instance via ssh</h3>
-<p>Open your Terminal application on your local computer (<strong>not</strong> on the visual interface of your Amazon EC2 Ubuntu machine).</p>
+<section id="part-1-connect-to-your-amazon-ec2-instance-via-ssh" class="level3">
+<h3 class="anchored" data-anchor-id="part-1-connect-to-your-amazon-ec2-instance-via-ssh">Part 1: Connect to your Amazon EC2 instance via ssh</h3>
+<p>Before you start, make sure you received the IPv4 address of the virtual machine and your private key to connect to the machine from your course coordinator.</p>
+<section id="using-a-mac" class="level5">
+<h5 class="anchored" data-anchor-id="using-a-mac"><strong>Using a Mac</strong></h5>
+<p>Open your Terminal application on your local machine.</p>
 <p>Then type</p>
+<p><code>chmod 400 /local/path/to/student.pem</code></p>
 <p><code>ssh -i /local/path/to/key.pem&nbsp; ubuntu@xxx.xxx.xxx.xxx</code></p>
-<p>Replace the “xxx.xxx.xxx.xxx” with the Public IPv4 of your Amazon instance and the <em>/local/path/to/</em> with the local path to your key.pem file</p>
+<p>Replace the “xxx.xxx.xxx.xxx” with the Public IPv4 of your Amazon instance and the <code>/local/path/to/student.pem</code> with the local path to your <em>student.pem</em> file that was communicated to you previously.</p>
+<p>For more information on how to connect to your virtual machine, access <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-linux-inst-ssh.html" class="uri">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-linux-inst-ssh.html</a> .</p>
 </section>
-<section id="how-to-modify-your-path-variable" class="level3">
-<h3 class="anchored" data-anchor-id="how-to-modify-your-path-variable">How to modify your $PATH variable</h3>
+<section id="using-a-windows-machine" class="level5">
+<h5 class="anchored" data-anchor-id="using-a-windows-machine">Using a Windows machine</h5>
+<p>See <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-linux-inst-from-windows.html" class="uri">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-linux-inst-from-windows.html</a></p>
+</section>
+<section id="how-to-connect-to-your-amazon-ec2-instance-via-your-browser-during-the-course" class="level5">
+<h5 class="anchored" data-anchor-id="how-to-connect-to-your-amazon-ec2-instance-via-your-browser-during-the-course">How to connect to your Amazon EC2 instance via your browser (during the course)</h5>
+<p>Type the Public IPv4 in your browser address bar, <em>eg: https://xxx.xxx.xxx.xxx/</em></p>
+<p>Type in the username <em>ubuntu</em>, and the password provided to you by the course instructor.</p>
+<p>Once you log in, you should see the welcome screen.</p>
+<p>Please reject any invitation to update the system.</p>
+</section>
+<section id="how-to-modify-your-path-variable" class="level5">
+<h5 class="anchored" data-anchor-id="how-to-modify-your-path-variable">How to modify your $PATH variable</h5>
 <p>Once you are connected to your Amazon EC2 Ubuntu instance, try to view and edit your configuration files.&nbsp;</p>
 <p>Check the configuration files:</p>
 <p><code>ls -a ~/.</code></p>
@@ -248,11 +200,12 @@ ul.task-list li input[type="checkbox"] {
 <p><code>vi ~/.profile</code></p>
 <p><code>PATH="/home/ubuntu/Software/mash-Linux64-v2.3:$PATH"</code></p>
 </section>
-<section id="configure-your-amazon-ec2-ubuntu-instance" class="level3">
-<h3 class="anchored" data-anchor-id="configure-your-amazon-ec2-ubuntu-instance">Configure your Amazon EC2 Ubuntu instance</h3>
+</section>
+<section id="part-2-configure-your-amazon-ec2-ubuntu-instance" class="level3">
+<h3 class="anchored" data-anchor-id="part-2-configure-your-amazon-ec2-ubuntu-instance">Part 2: Configure your Amazon EC2 Ubuntu instance</h3>
 <p>Your Amazon EC2 Ubuntu instance should be ready to go right away. However, in order to go through the next modules of this course, you will need to install the list of tools below.</p>
 <p>First, familiarise yourselves with the tools. Understand what is their role in an NGS pipeline, what is the required input and the expected output. Who developed them and when? Do they have dependencies?</p>
-<p><strong>For each tool that you attempt to install, write down the steps you took to achieve that in the <a href="https://docs.google.com/document/d/1H_38XC9RgfFoWZ4K-6pw5xqFMhSY7hj4WLJPPQgsqOA/edit?usp=sharing">Shared student observations file</a>.</strong></p>
+<p><strong>For each tool that you attempt to install, write down the steps you took to achieve that in the <em>Shared student observations file</em>, which you have received from your course coordinator.</strong></p>
 <section id="fastqc" class="level4">
 <h4 class="anchored" data-anchor-id="fastqc">FastQC</h4>
 <p><a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/" class="uri">https://www.bioinformatics.babraham.ac.uk/projects/fastqc/</a></p>
@@ -348,7 +301,8 @@ Add spades.py to \~/.profile -->
 
 `/usr/share/doc/ncbi-blast+` -->
 <p><strong>ARIBA</strong></p>
-<p><a href="https://sanger-pathogens.github.io/ariba/" class="uri">https://sanger-pathogens.github.io/ariba/</a></p>
+<p><a href="https://sanger-pathogens.github.io/ariba/" class="uri">https://sanger-pathogens.github.io/ariba/</a> <!-- In the ARIBA install, follow these instructions: https://github.com/sanger-pathogens/ariba/issues/327 
+Modify accordingly in sudo vi /usr/local/lib/python3.8/dist-packages/ariba/samtools_variants.py    --></p>
 <p>Configure the MLST calling, Resfinder and CARD databases.</p>
 <p><code>ariba pubmlstget "Staphylococcus aureus" get_mlst</code></p>
 <p><code>ariba getref resfinder out.resfinder</code></p>

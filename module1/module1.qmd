@@ -4,25 +4,39 @@ title: "Module 1"
 
 ### Module 1: Set up your bioinformatics working environment
 
-### Connect to your Amazon EC2 instance
+### Part 1: Connect to your Amazon EC2 instance via ssh
 
-Type the Public IPv4 in your browser address bar, *eg: <https://18.169.193.251/>*
+Before you start, make sure you received the IPv4 address of the virtual machine and your private key to connect to the machine from your course coordinator.
 
-The username is *ubuntu*, and the password the instance ID, *eg i-07833a8ccc08c1030*
+##### **Using a Mac**
 
-Once you log in, you should see the welcome screen.
-
-### How to connect to your Amazon EC2 instance via ssh
-
-Open your Terminal application on your local computer (**not** on the visual interface of your Amazon EC2 Ubuntu machine).
+Open your Terminal application on your local machine.
 
 Then type
 
+`chmod 400 /local/path/to/student.pem`
+
 `ssh -i /local/path/to/key.pem  ubuntu@xxx.xxx.xxx.xxx`
 
-Replace the “xxx.xxx.xxx.xxx” with the Public IPv4 of your Amazon instance and the */local/path/to/* with the local path to your key.pem file
+Replace the “xxx.xxx.xxx.xxx” with the Public IPv4 of your Amazon instance and the `/local/path/to/student.pem` with the local path to your *student.pem* file that was communicated to you previously.
 
-### How to modify your \$PATH variable
+For more information on how to connect to your virtual machine, access <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-linux-inst-ssh.html> .
+
+##### Using a Windows machine
+
+See <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-linux-inst-from-windows.html>
+
+##### How to connect to your Amazon EC2 instance via your browser (during the course)
+
+Type the Public IPv4 in your browser address bar, *eg: https://xxx.xxx.xxx.xxx/*
+
+Type in the username *ubuntu*, and the password provided to you by the course instructor.
+
+Once you log in, you should see the welcome screen.
+
+Please reject any invitation to update the system.
+
+##### How to modify your \$PATH variable
 
 Once you are connected to your Amazon EC2 Ubuntu instance, try to view and edit your configuration files. 
 
@@ -38,13 +52,13 @@ Eg:
 
 `PATH="/home/ubuntu/Software/mash-Linux64-v2.3:$PATH"`
 
-### Configure your Amazon EC2 Ubuntu instance
+### Part 2: Configure your Amazon EC2 Ubuntu instance
 
 Your Amazon EC2 Ubuntu instance should be ready to go right away. However, in order to go through the next modules of this course, you will need to install the list of tools below.
 
 First, familiarise yourselves with the tools. Understand what is their role in an NGS pipeline, what is the required input and the expected output. Who developed them and when? Do they have dependencies?
 
-**For each tool that you attempt to install, write down the steps you took to achieve that in the [Shared student observations file](https://docs.google.com/document/d/1H_38XC9RgfFoWZ4K-6pw5xqFMhSY7hj4WLJPPQgsqOA/edit?usp=sharing).**
+**For each tool that you attempt to install, write down the steps you took to achieve that in the *Shared student observations file*, which you have received from your course coordinator.**
 
 #### FastQC
 
@@ -167,7 +181,8 @@ Add spades.py to \~/.profile -->
 
 **ARIBA**
 
-<https://sanger-pathogens.github.io/ariba/>
+<https://sanger-pathogens.github.io/ariba/> <!-- In the ARIBA install, follow these instructions: https://github.com/sanger-pathogens/ariba/issues/327 
+Modify accordingly in sudo vi /usr/local/lib/python3.8/dist-packages/ariba/samtools_variants.py    -->
 
 Configure the MLST calling, Resfinder and CARD databases.
 

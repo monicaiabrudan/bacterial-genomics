@@ -23,8 +23,15 @@ Find out more at <https://github.com/sanger-pathogens/ariba/wiki>
 #### AMR determinants
 
 1.  In your virtual machine, navigate to the folder */home/ubuntu/Data/all_fastas*, where you will find all the assemblies for this study.
-2.  Run ARIBA on the samples Resfinder and CARD
+2.  Run ARIBA on the samples using the Resfinder database
 
-Visualise the results.
+Eg:
 
-Compare Resfinder and CARD results.
+`ariba run ARIBA_dbs/out.resfinder.prepareref all_fastqs/ERR017200_1.fastq.gz all_fastqs/ERR017200_2.fastq.gz ARIBA_output/ERR017200.run`
+
+3.  Write a bash script to run ARIBA on multiple samples at once
+
+4.  Aggregate the ARIBA results
+5.  Visualise the results.
+6.  Run ARIBA on the samples using the CARD database
+7.  Compare Resfinder and CARD results.
