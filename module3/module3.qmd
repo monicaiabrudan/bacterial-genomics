@@ -4,34 +4,211 @@ title: "Module 3"
 
 ### Bacterial genome assembly data analysis
 
-### Tools to be used in Module 3
+#### **Part 1: Antimicrobial resistance identification using ARIBA**
 
-**ARIBA**
+The first part of this exercise is broadly based on [a tutorial by Martin Hunt.](https://github.com/sanger-pathogens/pathogen-informatics-training)
 
-ARIBA is a tool that identifies antibiotic resistance genes by running local assemblies. It can also be used for MLST calling.
+#### Introduction
 
-The input is a FASTA file of reference sequences (can be a mix of genes and noncoding sequences) and paired sequencing reads. ARIBA reports which of the reference sequences were found, plus detailed information on the quality of the assemblies and any variants between the sequencing reads and the reference sequences.
+[ARIBA](Find%20out%20more%20at%20https://github.com/sanger-pathogens/ariba/wiki) is a tool that identifies antibiotic resistance genes. This tutorial will walk you through the analysis of the Staphylococcus aureus data set used in the paper:
 
-Find out more at <https://github.com/sanger-pathogens/ariba/wiki>
+[**Novel multidrug-resistant sublineages of *Staphylococcus aureus* clonal complex 22 discovered in India**](https://journals.asm.org/doi/full/10.1128/msphere.00185-23)
 
-#### Multi Locus Sequence Typing (MLST)
+**Abrudan, Shamanna et al, mSphere 2023 <https://doi.org/10.1128/msphere.00185-23>**
 
--   what is MLST, role and applications
+**Learning outcomes** By the end of this tutorial you can expect to be able to:
 
-<https://github.com/sanger-pathogens/ariba/wiki/MLST-calling-with-ARIBA>
+• Download and prepare the standard AMR databases for use with ARIBA
 
-#### AMR determinants
+• Prepare your own database for use with ARIBA
 
-1.  In your virtual machine, navigate to the folder */home/ubuntu/Data/all_fastas*, where you will find all the assemblies for this study.
-2.  Run ARIBA on the samples using the Resfinder database
+• Perform QC on input data and understand why QC is important
+
+• Run ARIBA on several samples to identify antibiotic resistance
+
+• Understand the different flags produced by ARIBA
+
+• Summarise ARIBA results for several samples
+
+• Query the AMR results produced by ARIBA
+
+• Use Phandango to visualise ARIBA results
+
+This module comprises the following sections:
+
+1\. Run ARIBA on a reference database
+
+2\. View summarized results using Phandango\
+
+You can run the commands in this module in the Amazon EC2 instance you were provided by your course instructor.
+
+ARIBA should be already installed on this machine. If you need to use a different machine, please follow the instructions from Module 1 of this course.
+
+**1. Run ARIBA on a reference database**
+
+Configure the Resfinder and CARD reference databases.
+
+`ariba getref resfinder out.resfinder`
+
+`ariba prepareref -f out.resfinder.fa -m out.resfinder.tsv out.resfinder.prepareref`
+
+`ariba getref card out.card`
+
+`ariba prepareref -f out.card.fa -m out.card.tsv out.card.prepareref`
+
+**How to run on one sample**
+
+ARIBA needs the database directories, for eg, *out.resfinder.prepareref* or *out.card.prepareref*, and two sequencing reads files reads.1.fastq.gz and reads.2.fastq.gz. The command to run ARIBA is:
+
+`ariba run out.resfinder.prepareref reads.1.fastq.gz reads.2.fastq.gz outdir`
+
+The above command will make a new directory called ***outdir*** that contains the results.
+
+**Run ARIBA on all samples**
+
+The S. aureus dataset consists of many samples, and we need to run ARIBA on each sample, which can be done with a “for” loop. We assume that the reads files are named like this:
+
+```         
+name1_1.fastq.gz name1_2.fastq.gz
+name2_1.fastq.gz name2_2.fastq.gz
+name3_1.fastq.gz name3_2.fastq.gz
+```
+
+Then we can run ARIBA on all samples like this (you may need to edit this command depending on how your own files are named):
 
 Eg:
 
-`ariba run ARIBA_dbs/out.resfinder.prepareref all_fastqs/ERR017200_1.fastq.gz all_fastqs/ERR017200_2.fastq.gz ARIBA_output/ERR017200.run`
+```         
+for sample in `ls *.1.fastq.gz | sed 's/\.1.fastq.gz//'`
+do
+  ariba run out.resfinder.prepareref $sample_1.fastq.gz $sample_2.fastq.gz $sample.ariba
+done
+```
 
-3.  Write a bash script to run ARIBA on multiple samples at once
+The output directory of each sample is called *\$sample.ariba*, for example *name1.ariba* is the output directory for sample *name1*.
 
-4.  Aggregate the ARIBA results
-5.  Visualise the results.
-6.  Run ARIBA on the samples using the CARD database
-7.  Compare Resfinder and CARD results.
+**EXERCISE: Using the information above, write a script to fit the file names and paths in your own context and run ARIBA on all samples.**
+
+**ARIBA output**
+
+The format of the output files are described [here](https://github.com/sanger-pathogens/ariba/wiki/Task:-run).
+
+**Viewing ARIBA results in Phandango**
+
+This section describes how to use Phandango to view a summary of ARIBA results from many samples.
+
+The most important output file from ARIBA is the report called report.tsv. For this tutorial, we have all sample reports in the directory */home/ubuntu/Data/ARIBA_output*
+
+```         
+ls /home/ubuntu/Data/ARIBA_output | wc -l
+```
+
+ARIBA has a functon called “**summary**” that can summarise presence/absence of sequences and/or SNPs across samples. It takes at least two ariba reports as input, and makes a CSV file that can be opened in your favourite spreadsheet program, and also makes input files for [Phandango](https://jameshadfield.github.io/phandango/#/). The two Phandango files (a tree and a CSV file) can be dropped straight into the Phandango page for viewing.
+
+The tree that ARIBA makes is based on the CSV file, which contains results of presence/absence of sequence and SNPs, and other information such as percent identity between contigs and reference sequences. ***This means that it does not necessarily represent the real phylogeny of the samples.*** It is more accurate to provide a tree built from the sequencing data. For this reason, we will use a pre-computed tree file ***/home/ubuntu/Data/tree_for_phandango.tre***.
+
+**Basic usage of ariba summary**
+
+Check the options of ***ariba summary***using the following command:
+
+`ariba summary -h`
+
+First, let’s run ariba summary using the default settings, except we will skip making the tree:
+
+`ariba summary --no_tree out /home/ubuntu/Data/ARIBA_output/*.tsv`
+
+We can see that this made two files:
+
+`ls out.*`
+
+They are the same except for the first line, which has Phandango-specific information. ARIBA uses the filenames as sample names in the output:
+
+```         
+head -n 2 out.phandango.csv
+```
+
+The first name is *"/home/ubuntu/Data/ARIBA_output/\*/sample.tsv"*, and the rest are named similarly.
+
+This is not ideal, as it will look ugly in Phandango. Further, the names must exactly match the names in the tree file for Phandango to work (have a look in the tree ***/home/ubuntu/Data/trees/tree_for_phandango.nwk***). You could do a little hacking here using the Unix command *sed* on the CSV file. Instead, we can supply ARIBA with a file of filenames that also tells ariba what to call the samples in its output CSV files. Instead of “*/home/ubuntu/Data/ARIBA_output/sample.tsv*”, we would like to simply use “sample”, which is cleaner and matches the tree file. It also means we can (and will) repeatedly run ariba summary with different options, and get output files that can be loaded straight into Phandango. This is one way to make the file with the naming information:
+
+```         
+ls /home/ubuntu/Data/ARIBA_output/*/report.tsv | awk -F/ '{name=$(NF-1); sub(/\.ariba$/, "", name); print $0, name}' > ARIBA_output/filenames.fofn
+```
+
+The file is quite simple. Column 1 is the filename, and column 2 is the name we would like to use in the output.
+
+```         
+ head ARIBA_output/filenames.fofn
+```
+
+Now we can rerun summary using this input file. Note the use of the new option --fofn.
+
+```         
+ariba summary --no_tree --fofn ARIBA_output/filenames.fofn ARIBA_output/out /home/ubuntu/Data/ARIBA_output/*/report.tsv
+```
+
+Check that the renaming worked:
+
+```         
+head -n 2 out.phandango.csv
+```
+
+Now go to Phandango and drag and drop the files out.phandango.csv and trees/tree_for_phandango.nwk into the window. The result should like this
+
+![](images/phandango.png)
+
+This a very high-level summary of the data. For each cluster, it is simply saying whether or not each sample has a ‘match’. Green means a match, and pink means not a match. For presence/absence genes, this means that the gene must simply be there to count as a match. If it is a “variant only” gene, then the gene must be there and one of the variants that we told ARIBA about earlier when generating the ARIBA database.
+
+**More information per cluster**
+
+In addition to a simple “yes” or “no” as to whether a sample “matches” a given cluster (as explained above), more columns can be output for each cluster. See the ARIBA summary wiki page for a full description of the options.
+
+Adding more columns can result in a very wide plot, so we will just look at 23S from now on, using the option --only_clusters 23S. Adding the option --preset all will show all available columns for the 23S cluster:
+
+```         
+ariba summary -only_clusters 23S -preset cluster_all -no_tree -fofn data/filenames.fofn out data/ARIBA_reports/*.tsv
+```
+
+As before, drag and drop the files out.phandango.csv and data/tree_for_phandango.tre into the window. This time the result should look like this:
+
+Now there are seven columns, showing various findings from ARIBA for 23S. These columns are described in the ARIBA summary wiki page.
+
+You can control exactly which of the seven cluster columns are output using the option -- cluster_cols instead of --preset. For example, this will show just the “match” and “pct_id” columns:
+
+```         
+ariba summary -only_clusters 23S -cluster_cols match,pct_id -no_tree -fofn data/filenames.fofn out data/ARIBA_reports/*.tsv
+```
+
+**Variants** In the previous screenshot, where the option --preset cluster_all, there are two variant columns: “known_var” and “novel_var”. Green means “yes” and pink means “no”. Here, we are considering a variant to be a difference bewteen the reference sequence and the assembly contig from the reads. The known_var column indicates whether each sample has any variant that is known to ARIBA, which means it was included when the original ARIBA database was generated. The novel_var column indicates whether or not a sample has any variant that is not already known to ARIBA.
+
+We can view the calls for all the known variants by adding the --known_variants option:
+
+```         
+ariba summary -only_clusters 23S -known_variants -no_tree -fofn data/filenames.fofn out data/ARIBA_reports/*.tsv
+```
+
+As before, drag and drop the files out.phandango.csv and data/tree_for_phandango.tre into the window. This time the result should like this:
+
+Each known SNP and whether or not it is present is shown, but you may have noticed there are three colours. Green means “yes”, orange means “heterozygous”, and pink means “no”. N. gonorrhoeae has four copies of 23S. A SNP could be present in none, some, or all copies. Where it is present in 1,2, or 3 copies, it is called “heterozygous” by ARIBA. Consider the SNP 2597CT in column 4, and column 5 to the right “2597CT.%”. Samples either do not have this SNP, or have heterozygous calls. The 2597CT.% shows the percent of reads that have the SNP, when mapped to the contig. Hover over the coloured blocks in Phandango to see the percentage.
+
+```         
+ariba summary -only_clusters 23S -novel_variants -no_tree -fofn data/filenames.fofn out data/ARIBA_reports/*.tsv
+```
+
+Now Phandango shows all variants found in any of the samples (even if the variant is unique to one sample). This results in a lot of columns!
+
+**Part 2: Antimicrobial Resistance Identification using Pathogenwatch**
+
+Browse the public collection:
+
+<https://pathogen.watch/collection/mxebr8oz0wjm-module2-s-aureus>
+
+Download the AMR genes and AMR SNPs
+
+**Part 3: Compare results obtained with ARIBA Resfinder versus Pathogenwatch**
+
+Open the ARIBA summary files and compare them with the AMR genes and AMR SNPs files you downloaded from Pathogenwatch.
+
+-   Which tool produced more results? Why?
+
+-   Which tool would you use to report AMR in your collection of S. aureus?

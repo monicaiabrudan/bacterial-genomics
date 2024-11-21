@@ -8,6 +8,8 @@ title: "Module 1"
 
 Before you start, make sure you received the IPv4 address of the virtual machine and your private key to connect to the machine from your course coordinator.
 
+***The virtual machines provided during this course are intended exclusively for use with the course material.***
+
 ##### **Using a Mac**
 
 Open your Terminal application on your local machine.
@@ -183,21 +185,3 @@ Add spades.py to \~/.profile -->
 
 <https://sanger-pathogens.github.io/ariba/> <!-- In the ARIBA install, follow these instructions: https://github.com/sanger-pathogens/ariba/issues/327 
 Modify accordingly in sudo vi /usr/local/lib/python3.8/dist-packages/ariba/samtools_variants.py    -->
-
-Configure the MLST calling, Resfinder and CARD databases.
-
-`ariba pubmlstget "Staphylococcus aureus" get_mlst`
-
-`ariba getref resfinder out.resfinder`
-
-`ariba prepareref -f out.resfinder.fa -m out.resfinder.tsv out.resfinder.prepareref`
-
-`ariba getref card out.card`
-
-`ariba prepareref -f out.card.fa -m out.card.tsv out.card.prepareref`
-
-How to run ARIBA
-
-```         
-ariba run out.ncbi.prepareref reads1.fastq reads2.fastq out.run
-```
