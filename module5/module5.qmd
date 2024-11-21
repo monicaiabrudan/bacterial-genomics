@@ -1,0 +1,9 @@
+Tools for bioinformatics
+
+-   ChatGPT
+
+How to setup your Amazon EC machine
+
+-   Create an image
+
+    <https://medium.com/>@virajpatoliya/easy-guide-how-to-clone-restore-aws-ec2-instances-3d29e156ac65
