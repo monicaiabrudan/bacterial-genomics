@@ -163,39 +163,7 @@ This a very high-level summary of the data. For each cluster, it is simply sayin
 
 In addition to a simple “yes” or “no” as to whether a sample “matches” a given cluster (as explained above), more columns can be output for each cluster. See the ARIBA summary wiki page for a full description of the options.
 
-Adding more columns can result in a very wide plot, so we will just look at 23S from now on, using the option --only_clusters 23S. Adding the option --preset all will show all available columns for the 23S cluster:
-
-```         
-ariba summary -only_clusters 23S -preset cluster_all -no_tree -fofn data/filenames.fofn out data/ARIBA_reports/*.tsv
-```
-
-As before, drag and drop the files out.phandango.csv and data/tree_for_phandango.tre into the window. This time the result should look like this:
-
-Now there are seven columns, showing various findings from ARIBA for 23S. These columns are described in the ARIBA summary wiki page.
-
-You can control exactly which of the seven cluster columns are output using the option -- cluster_cols instead of --preset. For example, this will show just the “match” and “pct_id” columns:
-
-```         
-ariba summary -only_clusters 23S -cluster_cols match,pct_id -no_tree -fofn data/filenames.fofn out data/ARIBA_reports/*.tsv
-```
-
-**Variants** In the previous screenshot, where the option --preset cluster_all, there are two variant columns: “known_var” and “novel_var”. Green means “yes” and pink means “no”. Here, we are considering a variant to be a difference bewteen the reference sequence and the assembly contig from the reads. The known_var column indicates whether each sample has any variant that is known to ARIBA, which means it was included when the original ARIBA database was generated. The novel_var column indicates whether or not a sample has any variant that is not already known to ARIBA.
-
-We can view the calls for all the known variants by adding the --known_variants option:
-
-```         
-ariba summary -only_clusters 23S -known_variants -no_tree -fofn data/filenames.fofn out data/ARIBA_reports/*.tsv
-```
-
-As before, drag and drop the files out.phandango.csv and data/tree_for_phandango.tre into the window. This time the result should like this:
-
-Each known SNP and whether or not it is present is shown, but you may have noticed there are three colours. Green means “yes”, orange means “heterozygous”, and pink means “no”. N. gonorrhoeae has four copies of 23S. A SNP could be present in none, some, or all copies. Where it is present in 1,2, or 3 copies, it is called “heterozygous” by ARIBA. Consider the SNP 2597CT in column 4, and column 5 to the right “2597CT.%”. Samples either do not have this SNP, or have heterozygous calls. The 2597CT.% shows the percent of reads that have the SNP, when mapped to the contig. Hover over the coloured blocks in Phandango to see the percentage.
-
-```         
-ariba summary -only_clusters 23S -novel_variants -no_tree -fofn data/filenames.fofn out data/ARIBA_reports/*.tsv
-```
-
-Now Phandango shows all variants found in any of the samples (even if the variant is unique to one sample). This results in a lot of columns!
+**Variants** In the previous screenshot, where the option --preset cluster_all, there are two variant columns: “known_var” and “novel_var”. Green means “yes” and pink means “no”.
 
 **Part 2: Antimicrobial Resistance Identification using Pathogenwatch**
 
@@ -203,7 +171,7 @@ Browse the public collection:
 
 <https://pathogen.watch/collection/mxebr8oz0wjm-module2-s-aureus>
 
-Download the AMR genes and AMR SNPs
+Download the AMR genes and AMR SNPs.
 
 **Part 3: Compare results obtained with ARIBA Resfinder versus Pathogenwatch**
 

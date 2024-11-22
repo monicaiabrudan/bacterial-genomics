@@ -1,9 +1,19 @@
-Tools for bioinformatics
-
--   ChatGPT
+---
+title: "Module 5"
+---
 
 How to setup your Amazon EC machine
 
--   Create an image
+-   Only attempt this if you have a back cad available.
+
+-   Create an Amazon account
+
+-   Create an instance
+
+-   Setup your bioinformatics tools
+
+<!-- -->
+
+-   Once you are happy with your result, create an image, which you can use later.
 
     <https://medium.com/>@virajpatoliya/easy-guide-how-to-clone-restore-aws-ec2-instances-3d29e156ac65

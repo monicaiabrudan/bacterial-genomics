@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2023-07-10">
 
-<title>Microreact documentation – Bioinformatic methods for microbial genomics and transcriptomics, Cluj-Napoca, November 2024</title>
+<title>module3_answers – Bioinformatic methods for microbial genomics and transcriptomics, Cluj-Napoca, November 2024</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -145,7 +144,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Microreact documentation</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -170,32 +169,21 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Microreact documentation</h1>
-</div>
 
 
 
-<div class="quarto-title-meta">
-
-    
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">July 10, 2023</p>
-    </div>
-  </div>
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p><a href="https://docs.microreact.org/" class="uri">https://docs.microreact.org/</a></p>
+<p><strong>Run ARIBA on all samples</strong></p>
+<p>Example script: create the following bash file: <code>mkdir /home/ubuntu/Data/ARIBA_run/run_ariba.sh</code></p>
+<p>Add the following lines of code:</p>
+<p><code>for sample in `ls /home/ubuntu/Data/all_fastqs/*_1.fastq.gz | sed 's/\_1.fastq.gz//'`</code></p>
+<p><code>do</code></p>
+<p><code>echo $sample</code></p>
+<p><code>output=$(echo $sample | sed -E 's#.*/([^/]+)$#\1#')</code></p>
+<p><code>if [ -d /home/ubuntu/Data/ARIBA_output/${output}.ariba ]; then</code></p>
+<p><code>rm -r /home/ubuntu/Data/ARIBA_output/${output}.ariba</code></p>
+<p><code>fi</code></p>
+<p><code>ariba run /home/ubuntu/Data/ARIBA_dbs/out.resfinder.prepareref ${sample}_1.fastq.gz ${sample}_2.fastq.gz /home/ubuntu/Data/ARIBA_output/${output}.ariba</code></p>
+<p><code>done</code></p>
 
 
 

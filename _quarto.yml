@@ -13,9 +13,12 @@ website:
       - text: Training materials
         menu:
           - module1/module1.qmd
-          #- module2/module2.qmd
-          #- module3/module3.qmd
-          #- microreact/microreact.qmd
+          - module2/module2.qmd
+          - module3/module3.qmd
+          - module4/module4.qmd
+          - module5/module5.qmd
+          - module6/module6.qmd
+          - microreact/microreact.qmd
           #- data-flo/data-flo.qmd
           #- resources.qmd
 
