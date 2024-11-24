@@ -106,30 +106,6 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../module1/module1.html">
  <span class="dropdown-text">Module 1</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../module2/module2.html">
- <span class="dropdown-text">Module 2</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../module3/module3.html">
- <span class="dropdown-text">Module 3</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../module4/module4.html">
- <span class="dropdown-text">Module 4</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../module5/module5.html">
- <span class="dropdown-text">Module 5</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../module6/module6.html">
- <span class="dropdown-text">Module 6</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../microreact/microreact.html">
- <span class="dropdown-text">Microreact tutorial</span></a>
-  </li>  
     </ul>
   </li>
 </ul>
@@ -450,23 +426,19 @@ Sequences</code></pre>
 </section>
 <section id="how-to-run-prokka-on-all-samples-from-one-folder" class="level4">
 <h4 class="anchored" data-anchor-id="how-to-run-prokka-on-all-samples-from-one-folder">How to run Prokka on all samples from one folder</h4>
-<p>Example script: create the following bash file: <code>mkdir /home/ubuntu/Data/PROKKA_run/run_prokka.sh</code></p>
+<p>Example script: create the following bash file: <code>/home/ubuntu/Data/PROKKA_run/run_prokka.sh</code></p>
 <p>Add the following lines of code:</p>
-<p><code>for sample in `ls /home/ubuntu/Data/all_fastas/*.fasta | sed 's/\.fasta//'`</code></p>
-<p><code>do</code></p>
-<p><code>echo $sample</code></p>
-<p><code>output=$(echo $sample | sed -E 's#.*/([^/]+)$#\1#')</code></p>
-<p><code>echo $output</code></p>
-<p><code>docker run -v $(pwd):$(pwd) -w $(pwd) staphb/prokka:latest prokka --outdir /home/ubuntu/Data/annotations/${output} --prefix ${output} /home/ubuntu/Data/all_fastas/${output}.fasta</code></p>
-<p><code>done</code></p>
+<p>for sample in `ls /home/ubuntu/Data/all_fastas/*.fasta | sed ‘s/\.fasta//’`</p>
+<p>do</p>
+<p>&nbsp;echo $sample</p>
+<p>&nbsp;output=$(echo $sample | sed -E ‘s#.*/([^/]+)$#\1#’)</p>
+<p>&nbsp;echo $output</p>
+<p>&nbsp;docker run -v $(pwd):$(pwd) -w $(pwd) staphb/prokka:latest prokka –outdir /home/ubuntu/Data/annotations/${output} –prefix ${output} /home/ubuntu/Data/all_fastas/${output}.fasta</p>
+<p>done</p>
 </section>
 </section>
-<section id="core-and-accessory-genomes-with-roary" class="level2">
-<h2 class="anchored" data-anchor-id="core-and-accessory-genomes-with-roary"><strong>Core and accessory genomes with Roary</strong></h2>
-<pre><code>docker run --rm -it -v $(pwd):$(pwd) sangerpathogens/roary roary -f /Data /home/ubuntu/Data/annotations/*/*.gff</code></pre>
-</section>
-<section id="roary-trees" class="level2">
-<h2 class="anchored" data-anchor-id="roary-trees"><strong>Roary trees</strong></h2>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
 </section>
 <section id="bonus-activity" class="level2">
 <h2 class="anchored" data-anchor-id="bonus-activity">Bonus activity</h2>

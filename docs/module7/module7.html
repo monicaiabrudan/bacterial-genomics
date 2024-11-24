@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Module 1 – Bioinformatic methods for microbial genomics and transcriptomics, Cluj-Napoca, November 2024</title>
+<title>module7 – Bioinformatic methods for microbial genomics and transcriptomics, Cluj-Napoca, November 2024</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -120,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Module 1</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -145,172 +145,54 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Module 1</h1>
+
+
+
+<section id="what-is-mlst" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-mlst">What is MLST?</h3>
+<ul>
+<li><p>Proposed by Maiden et al.&nbsp;in 1998.</p></li>
+<li><p>Popular genotypic method in taxonomy classification.</p></li>
+<li><p>Identifies allelic variants to characterize, subtype, and classify the members of a haploid bacterial population.</p></li>
+</ul>
+</section>
+<section id="how-does-mlst-work" class="level3">
+<h3 class="anchored" data-anchor-id="how-does-mlst-work">How does MLST work?</h3>
+<ul>
+<li><p>Consist of sequencing several different housekeeping genes (generally 7) from an organism and comparing their sequences with the sequences of the same genes from different strains of the same organism.</p></li>
+<li><p>For each gene, an approximately 45–500 bp sequence is amplified using PCR and then sequenced by Sanger’s method.</p></li>
+<li><p>Each nucleotide along the sequence is compared, and differences are noted.</p></li>
+<li><p>Each difference or sequence variant is called an allele and is assigned a number. The strain being studied is then assigned a series of numbers as its allelic profile or multilocus sequence types.</p></li>
+<li><p>Strains with identical sequences for a given gene have the same allele for that gene, and two strains with identical sequences for all the genes have the same allelic profile.</p></li>
+<li><p>The relationship between each allelic profile is expressed in a dendrogram of linkage distance that varies.</p></li>
+<li><p>Combination of variants = Sequence Type (ST)</p></li>
+<li><p>Number of differences is ignored; a new identifier is given for every possible variant</p></li>
+<li><p>With 30 alleles per locus: ~20 billion possibilities</p></li>
+<li><p>Database with observed combinations</p></li>
+</ul>
+<p><img src="images/mlst.png" class="img-fluid" width="632"></p>
+<p><img src="images/mlst2.png" class="img-fluid" width="671"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/mlst3.png" class="img-fluid figure-img" width="395"></p>
+<figcaption>Using MLST to Study Bacterial Variation: Prospects in the Genomic Era, 2014, Future Microbiology</figcaption>
+</figure>
 </div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="module-1-set-up-your-bioinformatics-working-environment" class="level3">
-<h3 class="anchored" data-anchor-id="module-1-set-up-your-bioinformatics-working-environment">Module 1: Set up your bioinformatics working environment</h3>
+<p>More general information on MLST can be found <a href="https://www.slideshare.net/manashdebbarma5/multilocus-sequence-typin1#2">here</a></p>
 </section>
-<section id="part-1-connect-to-your-amazon-ec2-instance-via-ssh" class="level3">
-<h3 class="anchored" data-anchor-id="part-1-connect-to-your-amazon-ec2-instance-via-ssh">Part 1: Connect to your Amazon EC2 instance via ssh</h3>
-<p>Before you start, make sure you received the IPv4 address of the virtual machine and your private key to connect to the machine from your course coordinator.</p>
-<p><strong><em>The virtual machines provided during this course are intended exclusively for use with the course material.</em></strong></p>
-<section id="using-a-mac" class="level5">
-<h5 class="anchored" data-anchor-id="using-a-mac"><strong>Using a Mac</strong></h5>
-<p>Open your Terminal application on your local machine.</p>
-<p>Then type</p>
-<p><code>chmod 400 /local/path/to/student.pem</code></p>
-<p><code>ssh -i /local/path/to/key.pem&nbsp; ubuntu@xxx.xxx.xxx.xxx</code></p>
-<p>Replace the “xxx.xxx.xxx.xxx” with the Public IPv4 of your Amazon instance and the <code>/local/path/to/student.pem</code> with the local path to your <em>student.pem</em> file that was communicated to you previously.</p>
-<p>For more information on how to connect to your virtual machine, access <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-linux-inst-ssh.html" class="uri">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-linux-inst-ssh.html</a> .</p>
-</section>
-<section id="using-a-windows-machine" class="level5">
-<h5 class="anchored" data-anchor-id="using-a-windows-machine">Using a Windows machine</h5>
-<p>See <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-linux-inst-from-windows.html" class="uri">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/connect-linux-inst-from-windows.html</a></p>
-</section>
-<section id="how-to-connect-to-your-amazon-ec2-instance-via-your-browser-during-the-course" class="level5">
-<h5 class="anchored" data-anchor-id="how-to-connect-to-your-amazon-ec2-instance-via-your-browser-during-the-course">How to connect to your Amazon EC2 instance via your browser (during the course)</h5>
-<p>Type the Public IPv4 in your browser address bar, <em>eg: https://xxx.xxx.xxx.xxx/</em></p>
-<p>Type in the username <em>ubuntu</em>, and the password provided to you by the course instructor.</p>
-<p>Once you log in, you should see the welcome screen.</p>
-<p>Please reject any invitation to update the system.</p>
-</section>
-<section id="how-to-modify-your-path-variable" class="level5">
-<h5 class="anchored" data-anchor-id="how-to-modify-your-path-variable">How to modify your $PATH variable</h5>
-<p>Once you are connected to your Amazon EC2 Ubuntu instance, try to view and edit your configuration files.&nbsp;</p>
-<p>Check the configuration files:</p>
-<p><code>ls -a ~/.</code></p>
-<p>Edit the <strong><em>.profile</em></strong> file and add the paths in the <strong>PATH</strong> variable</p>
-<p>Eg:</p>
-<p><code>vi ~/.profile</code></p>
-<p><code>PATH="/home/ubuntu/Software/mash-Linux64-v2.3:$PATH"</code></p>
-</section>
-</section>
-<section id="part-2-configure-your-amazon-ec2-ubuntu-instance" class="level3">
-<h3 class="anchored" data-anchor-id="part-2-configure-your-amazon-ec2-ubuntu-instance">Part 2: Configure your Amazon EC2 Ubuntu instance</h3>
-<p>Your Amazon EC2 Ubuntu instance should be ready to go right away. However, in order to go through the next modules of this course, you will need to install the list of tools below.</p>
-<p>First, familiarise yourselves with the tools. Understand what is their role in an NGS pipeline, what is the required input and the expected output. Who developed them and when? Do they have dependencies?</p>
-<p><strong>For each tool that you attempt to install, write down the steps you took to achieve that in the <em>Shared student observations file</em>, which you have received from your course coordinator.</strong></p>
-<section id="fastqc" class="level4">
-<h4 class="anchored" data-anchor-id="fastqc">FastQC</h4>
-<p><a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/" class="uri">https://www.bioinformatics.babraham.ac.uk/projects/fastqc/</a></p>
-</section>
-<section id="bactinspector" class="level4">
-<h4 class="anchored" data-anchor-id="bactinspector">Bactinspector</h4>
-<p><a href="https://gitlab.com/antunderwood/bactinspector" class="uri">https://gitlab.com/antunderwood/bactinspector</a></p>
-</section>
-<section id="velvet-assembler" class="level4">
-<h4 class="anchored" data-anchor-id="velvet-assembler">Velvet assembler</h4>
-<p><a href="https://github.com/dzerbino/velvet" class="uri">https://github.com/dzerbino/velvet</a></p>
-<!--  Velvet is installed here: 
-
-`/usr/share/miniconda/pkgs/velvet-1.2.10-h5bf99c6_4/bin/velveth`
-
-Add */usr/share/miniconda/pkgs/velvet-1.2.10-h5bf99c6_4/bin/* to **PATH** -->
-</section>
-<section id="act-and-artemis" class="level4">
-<h4 class="anchored" data-anchor-id="act-and-artemis">ACT and Artemis</h4>
-<p><a href="https://www.sanger.ac.uk/tool/artemis-comparison-tool-act/" class="uri">https://www.sanger.ac.uk/tool/artemis-comparison-tool-act/</a></p>
-<!-- `conda install bioconda::velvet` -->
-</section>
-<section id="unicycler" class="level4">
-<h4 class="anchored" data-anchor-id="unicycler">Unicycler&nbsp;</h4>
-<p><a href="https://github.com/rrwick/Unicycler?tab=readme-ov-file#build-and-run-without-installation" class="uri">https://github.com/rrwick/Unicycler?tab=readme-ov-file#build-and-run-without-installation</a></p>
-<!-- `git clone https://github.com/rrwick/Unicycler.git`
-
-`cd Unicycler`
-
-`python3 setup.py install` -->
-</section>
-<section id="spades" class="level4">
-<h4 class="anchored" data-anchor-id="spades">SPADES</h4>
-<p><a href="https://github.com/ablab/spades" class="uri">https://github.com/ablab/spades</a></p>
-<!-- `wget https://github.com/ablab/spades/releases/download/v4.0.0/SPAdes-4.0.0-Linux.tar.gz`
-
-[//]: `tar -xzf SPAdes-4.0.0-Linux.tar.gz`
-
-[//]:`cd SPAdes-4.0.0-Linux/bin/` 
-
-Add spades.py to \~/.profile -->
-</section>
-<section id="quast" class="level4">
-<h4 class="anchored" data-anchor-id="quast">Quast</h4>
-<p><a href="https://github.com/ablab/quast" class="uri">https://github.com/ablab/quast</a></p>
-<!-- [//]:`conda install -c bioconda quast`
-
-[//]: Eg on how to run Quast
-
-[//]:`quast.py test_data/contigs_1.fasta \`
-
-[//]:`test_data/contigs_2.fasta \`
-
-[//]:`-r test_data/reference.fasta.gz \`
-
-[//]:`-g test_data/genes.txt \`
-
-[//]:`-1 test_data/reads1.fastq.gz -2 test_data/reads2.fastq.gz \`
-
-[//]:`-o quast_test_output`
-
-[//]: Quast path: */home/ubuntu/Software/quast/build/scripts-3.8/quast.py* -->
-</section>
-<section id="brew" class="level4">
-<h4 class="anchored" data-anchor-id="brew">brew</h4>
-<p><a href="https://docs.brew.sh/Homebrew-on-Linux" class="uri">https://docs.brew.sh/Homebrew-on-Linux</a></p>
-<!-- [//]:`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
-
-[//]:
-[//]:`echo >> /home/ubuntu/.zshrc`
-
-[//]:`echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/ubuntu/.zshrc`
-
-`eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"` -->
-</section>
-<section id="makeblastdb-and-tblastn" class="level4">
-<h4 class="anchored" data-anchor-id="makeblastdb-and-tblastn">makeblastdb and tblastn</h4>
-<p><a href="https://www.ncbi.nlm.nih.gov/books/NBK569861/" class="uri">https://www.ncbi.nlm.nih.gov/books/NBK569861/</a></p>
-<p><strong>prokka</strong></p>
-<p><a href="https://github.com/tseemann/prokka" class="uri">https://github.com/tseemann/prokka</a></p>
-<!-- #### Install prokka
-
-\
-`brew install brewsci/bio/prokka` -->
-</section>
-<section id="resfinder" class="level4">
-<h4 class="anchored" data-anchor-id="resfinder">resfinder</h4>
-<p><a href="https://github.com/cadms/resfinder" class="uri">https://github.com/cadms/resfinder</a></p>
-<!-- `pip install resfinder`
-
-\
-`python /home/ubuntu/.local/lib/python3.9/site-packages/resfinder/run_resfinder.py`
-
-`/usr/share/doc/ncbi-blast+` -->
-<p><strong>ARIBA</strong></p>
-<p><a href="https://sanger-pathogens.github.io/ariba/" class="uri">https://sanger-pathogens.github.io/ariba/</a> <!-- In the ARIBA install, follow these instructions: https://github.com/sanger-pathogens/ariba/issues/327 
-Modify accordingly in sudo vi /usr/local/lib/python3.8/dist-packages/ariba/samtools_variants.py    --></p>
-<p><strong>Prokka</strong></p>
-<p><a href="https://github.com/tseemann/prokka" class="uri">https://github.com/tseemann/prokka</a></p>
-<pre><code>docker pull staphb/prokka:latest
-docker run staphb/prokka:latest prokka -h</code></pre>
+<section id="mlst-with-ariba" class="level3">
+<h3 class="anchored" data-anchor-id="mlst-with-ariba">MLST with ARIBA</h3>
+<p>The manual can be found here: <a href="https://github.com/sanger-pathogens/ariba/wiki/MLST-calling-with-ARIBA" class="uri">https://github.com/sanger-pathogens/ariba/wiki/MLST-calling-with-ARIBA</a></p>
+<p>ARIBA can be used for MLST using the typing schemes from PubMLST. A list of available species can be obtained by running</p>
+<pre><code>ariba pubmlstspecies</code></pre>
+<p>Download the data (in this example, <code>Staphylococcus aureus</code>) using <code>pubmlstget</code>:</p>
+<pre><code>ariba pubmlstget "Staphylococcus aureus" get_mlst</code></pre>
+<p><strong>How to run ARIBA for one sample</strong></p>
+<pre><code>ariba run get_mlst/ref_db /home/ubuntu/Data/all_fastqs/ERR017200_1.fastq.gz /home/ubuntu/Data/all_fastqs/ERR017200_2.fastq.gz MLST</code></pre>
+<p><img src="images/mlst result.png" class="img-fluid" width="545"></p>
+<p>Write a script to run ARIBA MLST on all samples.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

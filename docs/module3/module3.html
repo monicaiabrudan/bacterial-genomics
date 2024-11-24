@@ -106,30 +106,6 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="../module1/module1.html">
  <span class="dropdown-text">Module 1</span></a>
   </li>  
-        <li>
-    <a class="dropdown-item" href="../module2/module2.html">
- <span class="dropdown-text">Module 2</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../module3/module3.html">
- <span class="dropdown-text">Module 3</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../module4/module4.html">
- <span class="dropdown-text">Module 4</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../module5/module5.html">
- <span class="dropdown-text">Module 5</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../module6/module6.html">
- <span class="dropdown-text">Module 6</span></a>
-  </li>  
-        <li>
-    <a class="dropdown-item" href="../microreact/microreact.html">
- <span class="dropdown-text">Microreact tutorial</span></a>
-  </li>  
     </ul>
   </li>
 </ul>
@@ -188,8 +164,29 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="bacterial-genome-assembly-data-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="bacterial-genome-assembly-data-analysis">Bacterial genome assembly data analysis</h3>
+<section id="core-and-accessory-genomes-with-roary" class="level2">
+<h2 class="anchored" data-anchor-id="core-and-accessory-genomes-with-roary"><strong>Core and accessory genomes with Roary</strong></h2>
+<p>Read about Roary <a href="https://sanger-pathogens.github.io/Roary/">here</a>.</p>
+<p>Roary is a high speed stand alone pan genome pipeline, which takes annotated assemblies in GFF3 format (produced by Prokka (Seemann, 2014)) and calculates the pan genome. Using a standard desktop PC, it can analyse datasets with thousands of samples, something which is computationally infeasible with existing methods, without compromising the quality of the results. 128 samples can be analysed in under 1 hour using 1 GB of RAM and a single processor. To perform this analysis using existing methods would take weeks and hundreds of GB of RAM. Roary is not intended for meta-genomics or for comparing extremely diverse sets of genomes.</p>
+<pre><code>docker run --rm -it -v $(pwd):$(pwd) sangerpathogens/roary roary -f /home/ubuntu/Data/roary /home/ubuntu/Data/annotations/*/*.gff</code></pre>
+<p>The summary output is present in the <code>summary_statistics.txt</code></p>
+<p><strong>Core genes (99% &lt;= strains &lt;= 100%) 1861</strong></p>
+<p><strong>Soft core genes (95% &lt;= strains &lt; 99%) 0</strong></p>
+<p><strong>Shell genes (15% &lt;= strains &lt; 95%) 962</strong></p>
+<p><strong>Cloud genes (0% &lt;= strains &lt; 15%) 838</strong></p>
+<p><strong>Total genes (0% &lt;= strains &lt;= 100%) 3661</strong></p>
+<p>Additionally, <em>Roary</em> produces a <code>gene_presence_absence.csv</code> file that can be opened in any spreadsheet software to manually explore the results. In this file, you will find information such as gene name and gene annotation, and, of course, whether a gene is present in a genome or not.</p>
+<p>Drop the <em>accessory_binary_genes.fa.newick</em> and <em>gene_presence_absence.csv</em> files in Phandango</p>
+<p><img src="images/phandango roary.png" class="img-fluid" width="664"></p>
+<p>When you analyze your own data, you will need a phylogeny that represents the evolutionary history of your isolates. The inference of a phylogenetic tree is not part of roary’s functions, but you can use the core gene alignment (file: <code>core_gene_alignment.aln</code>) as input to infer a tree.</p>
+<p><em>Roary</em> comes with a python script that allows you to generate a few plots to graphically assess your analysis output. You will need the <code>gene_presence_absence.csv</code> file and the phylogeny at <em>/home/ubuntu/Data/trees/tree.nwk</em>.</p>
+<p>You should get three files: a pangenome matrix, a frequency plot, and a pie chart.</p>
+<p><code>python /home/ubuntu/Software/roary_plots.py /home/ubuntu/Data/trees/tree_for_phandango.nwk /home/ubuntu/roary/gene_presence_absence.csv</code></p>
+<p><img src="images/roary1.png" class="img-fluid" width="475"></p>
+<p><img src="images/roary2.png" class="img-fluid" width="575"></p>
+<p><img src="images/roary3.png" class="img-fluid" width="570"></p>
+<section id="bacterial-genomes-data-analysis-with-ariba-and-pathogenwatch" class="level3">
+<h3 class="anchored" data-anchor-id="bacterial-genomes-data-analysis-with-ariba-and-pathogenwatch">Bacterial genomes data analysis with ARIBA and Pathogenwatch</h3>
 <section id="part-1-antimicrobial-resistance-identification-using-ariba" class="level4">
 <h4 class="anchored" data-anchor-id="part-1-antimicrobial-resistance-identification-using-ariba"><strong>Part 1: Antimicrobial resistance identification using ARIBA</strong></h4>
 <p>The first part of this exercise is broadly based on <a href="https://github.com/sanger-pathogens/pathogen-informatics-training">a tutorial by Martin Hunt.</a></p>
@@ -281,6 +278,7 @@ done</code></pre>
 </ul>
 
 
+</section>
 </section>
 </section>
 

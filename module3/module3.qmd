@@ -2,7 +2,49 @@
 title: "Module 3"
 ---
 
-### Bacterial genome assembly data analysis
+## **Core and accessory genomes with Roary**
+
+Read about Roary [here](https://sanger-pathogens.github.io/Roary/).
+
+Roary is a high speed stand alone pan genome pipeline, which takes annotated assemblies in GFF3 format (produced by Prokka (Seemann, 2014)) and calculates the pan genome. Using a standard desktop PC, it can analyse datasets with thousands of samples, something which is computationally infeasible with existing methods, without compromising the quality of the results. 128 samples can be analysed in under 1 hour using 1 GB of RAM and a single processor. To perform this analysis using existing methods would take weeks and hundreds of GB of RAM. Roary is not intended for meta-genomics or for comparing extremely diverse sets of genomes.
+
+```         
+docker run --rm -it -v $(pwd):$(pwd) sangerpathogens/roary roary -f /home/ubuntu/Data/roary /home/ubuntu/Data/annotations/*/*.gff
+```
+
+The summary output is present in the `summary_statistics.txt`
+
+**Core genes	(99% \<= strains \<= 100%)	1861**
+
+**Soft core genes	(95% \<= strains \< 99%)	0**
+
+**Shell genes	(15% \<= strains \< 95%)	962**
+
+**Cloud genes	(0% \<= strains \< 15%)	838**
+
+**Total genes	(0% \<= strains \<= 100%)	3661**
+
+Additionally, *Roary* produces a `gene_presence_absence.csv` file that can be opened in any spreadsheet software to manually explore the results. In this file, you will find information such as gene name and gene annotation, and, of course, whether a gene is present in a genome or not.
+
+Drop the *accessory_binary_genes.fa.newick* and *gene_presence_absence.csv* files in Phandango
+
+![](images/phandango roary.png){width="664"}
+
+When you analyze your own data, you will need a phylogeny that represents the evolutionary history of your isolates. The inference of a phylogenetic tree is not part of roary's functions, but you can use the core gene alignment (file: `core_gene_alignment.aln`) as input to infer a tree.
+
+*Roary* comes with a python script that allows you to generate a few plots to graphically assess your analysis output. You will need the `gene_presence_absence.csv` file and the phylogeny at */home/ubuntu/Data/trees/tree.nwk*.
+
+You should get three files: a pangenome matrix, a frequency plot, and a pie chart.
+
+`python /home/ubuntu/Software/roary_plots.py /home/ubuntu/Data/trees/tree_for_phandango.nwk /home/ubuntu/roary/gene_presence_absence.csv`
+
+![](images/roary1.png){width="475"}
+
+![](images/roary2.png){width="575"}
+
+![](images/roary3.png){width="570"}
+
+### Bacterial genomes data analysis with ARIBA and Pathogenwatch
 
 #### **Part 1: Antimicrobial resistance identification using ARIBA**
 

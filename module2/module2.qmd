@@ -342,32 +342,25 @@ Once prokka is done, open Artemis and load the .gff file and locate the *mecA* g
 
 #### How to run Prokka on all samples from one folder
 
-Example script: create the following bash file:
-`mkdir /home/ubuntu/Data/PROKKA_run/run_prokka.sh`
+Example script: create the following bash file: `/home/ubuntu/Data/PROKKA_run/run_prokka.sh`
 
 Add the following lines of code:
 
-`` for sample in `ls /home/ubuntu/Data/all_fastas/*.fasta | sed 's/\.fasta//'` ``
+for sample in \`ls /home/ubuntu/Data/all_fastas/\*.fasta \| sed 's/\\.fasta//'\`
 
-`do`
+do
 
-`echo $sample`
+ echo \$sample
 
-`output=$(echo $sample | sed -E 's#.*/([^/]+)$#\1#')`
+ output=\$(echo \$sample \| sed -E 's#.\*/(\[\^/\]+)\$#\\1#')
 
-`echo $output`
+ echo \$output
 
-`docker run -v $(pwd):$(pwd) -w $(pwd) staphb/prokka:latest prokka --outdir /home/ubuntu/Data/annotations/${output} --prefix ${output} /home/ubuntu/Data/all_fastas/${output}.fasta`
+ docker run -v \$(pwd):\$(pwd) -w \$(pwd) staphb/prokka:latest prokka --outdir /home/ubuntu/Data/annotations/\${output} --prefix \${output} /home/ubuntu/Data/all_fastas/\${output}.fasta
 
-`done`
+done
 
-## **Core and accessory genomes with Roary**
-
-```         
-docker run --rm -it -v $(pwd):$(pwd) sangerpathogens/roary roary -f /Data /home/ubuntu/Data/annotations/*/*.gff
-```
-
-## **Roary trees**
+## 
 
 ## Bonus activity
 
