@@ -264,9 +264,63 @@ What is the cumulative length of the assembly? Can you check if this expected fo
 
 ## Assembly methods comparison
 
+For assembly of short (Illumina) reads, we will use `Unicycler`. With short read data, `Unicycler` acts as wrapper script for the `SPAdes` assembler, and will produce an assembly with settings optimised for bacteria.
+
+In the command below we:
+
+-   Allocate 4 CPUs to the assembler
+
+    -   `-t 4`
+
+-   Specify the Illumina forward and reverse reads to use
+
+    -   `-1 <fastq>` and `-2 <fastq>`
+
+-   Specify a directory to output files to
+
+    -   `-o <dir>`
+
 `unicycler -t 4 -1 /home/ubuntu/Data/G18252308/illumina/ERR4635696_1.fastq.gz -2 /home/ubuntu/Data/G18252308/illumina/ERR4635696_2.fastq.gz -o ERR4635696.short`
 
+For assembly of long reads, `Unicycler` switches to the long read assembler `miniasm` - this is a very rapid assembler, but is not particularly accurate, and can often introduce errors and mistakes into its outputs.\
+
+In the command below we:
+
+-   Allocate 4 CPUs to the assembler
+
+    -   `-t 4`
+
+-   Specify the ONT long reads to use
+
+    -   `-l <fastq>`
+
+-   Specify a directory to output files to
+
+    -   `-o <dir>`
+
 `unicycler -t 4 -l /home/ubuntu/Data/G18252308/nanopore/ERR8187245.fastq.gz -o S_aureus_JKD6159.s100.unicycler.long`
+
+For assembly of both long and short reads, `Unicycler` uses `SPAdes` for an initial 'short read' assembly, and then uses the long reads to attempt to bridge the gaps between contigs from the initial `SPAdes` assembly. This can work well when the short read data is of high quality/depth but the ONT data is of low depth. However, the 'bridging step' can be time consuming, and if the short read assembly is poor, the final assembly may also be. If you have high quality and depth long reads, this may not be the best option.
+
+In the command below we:
+
+-   Allocate 4 CPUs to the assembler
+
+    -   `-t 4`
+
+-   Specify the Illumina forward and reverse reads to use
+
+    -   `-1 <fastq>` and `-2 <fastq>`
+
+-   Specify the ONT long reads to use
+
+    -   `-l <fastq>`
+
+-   Specify a directory to output files to
+
+    -   `-o <dir>`
+
+Note, this method may take over an hour to run on the VMs - check with an instructor before running.
 
 `unicycler -t 4 -1/home/ubuntu/Data/G18252308/illumina/ERR4635696_1.fastq.gz -2 /home/ubuntu/Data/G18252308/illumina/ERR4635696_2.fastq.gz -l /home/ubuntu/Data/G18252308/nanopore/ERR8187245.fastq.gz -o ERR8187245.unicycler.hybrid`
 
