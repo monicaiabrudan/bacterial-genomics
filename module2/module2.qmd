@@ -130,7 +130,7 @@ Visualize and interpret the FastQC results. Compare the QC results for Nanopore 
 
     [*https://www.ebi.ac.uk/ena/browser/text-search?query=ASM289538v1*](https://www.ebi.ac.uk/ena/browser/text-search?query=ASM289538v1)
 
-    ![](images/ENA search result.png)
+    ![](images/ENA%20search%20result.png)
 
 Check fields such as:
 
@@ -148,7 +148,7 @@ Check fields such as:
 
 Download the reference genome from the visual reference
 
-![](images/download reference.png){width="236"}
+![](images/download%20reference.png){width="236"}
 
 Or from the command line.
 
@@ -232,17 +232,17 @@ In the Terminal, type
 
 Artemis should open. Load your contigs.fa file.
 
-![](images/artemis interface.png){width="346"}
+![](images/artemis%20interface.png){width="346"}
 
-![](images/artemis assembly.png){width="631"}
+![](images/artemis%20assembly.png){width="631"}
 
-![Try View-\>Overview in the Artemis menu](images/artemis overview.png){width="304"}
+![Try View-\>Overview in the Artemis menu](images/artemis%20overview.png){width="304"}
 
 From the *Graph* menu, open *GC Deviation (G-C)/(G+C)* by clicking on the button next to it.
 
 Rescale the plot for to a more appropriate window size for this zoomed out view: Right click on the graph, and click *Maximum Window Size*, and select *20000*. Then move the graph slider of the right hand side of the screen down to the bottom of the bar.
 
-![](images/artemis gc.png)
+![](images/artemis%20gc.png)
 
 From the graph you can see that plot generally varies about an upper level and a lower level across the assembly, with shifts occurring at contig boundaries.
 
@@ -258,7 +258,7 @@ In your virtual machine, go to the Chrome browser, and navigate to:
 
 Alternatively, navigate to */home/ubuntu/Data/G18252308/illumina/G18252308_quast* and double click on *report.html*
 
-![](images/quast viz.png)
+![](images/quast%20viz.png)
 
 What is the cumulative length of the assembly? Can you check if this expected for a *S. aureus* genome? **Hint**: go back to the reference genome you found previously! What was the length of that assembly?
 
@@ -334,11 +334,11 @@ Note, this method may take over an hour to run on the VMs - check with an instru
 
 Check if the *mecA* gene was found in the annotated genome.
 
-![](images/grep mecA.png)
+![](images/grep%20mecA.png)
 
 Once prokka is done, open Artemis and load the .gff file and locate the *mecA* gene. How many nucleotides does it have?
 
-![](images/artemis mecA.png)
+![](images/artemis%20mecA.png)
 
 #### How to run Prokka on all samples from one folder
 

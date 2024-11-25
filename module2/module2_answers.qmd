@@ -1,7 +1,6 @@
 How to run Prokka on all samples from one folder
 
-Example script: create the following bash file:
-`mkdir /home/ubuntu/Data/PROKKA_run/run_prokka.sh`
+Example script: create the following bash file: `mkdir /home/ubuntu/Data/PROKKA_run/run_prokka.sh`
 
 Add the following lines of code:
 

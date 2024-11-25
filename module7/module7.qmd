@@ -1,3 +1,6 @@
+---
+title: "Module 7"
+---
 ### What is MLST?
 
 -   Proposed by Maiden et al. in 1998.
@@ -58,6 +61,6 @@ ariba pubmlstget "Staphylococcus aureus" get_mlst
 ariba run get_mlst/ref_db /home/ubuntu/Data/all_fastqs/ERR017200_1.fastq.gz /home/ubuntu/Data/all_fastqs/ERR017200_2.fastq.gz MLST
 ```
 
-![](images/mlst result.png){width="545"}
+![](images/mlst%20result.png){width="545"}
 
 Write a script to run ARIBA MLST on all samples.

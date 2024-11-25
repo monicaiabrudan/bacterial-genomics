@@ -14,21 +14,21 @@ docker run --rm -it -v $(pwd):$(pwd) sangerpathogens/roary roary -f /home/ubuntu
 
 The summary output is present in the `summary_statistics.txt`
 
-**Core genes	(99% \<= strains \<= 100%)	1861**
+**Core genes (99% \<= strains \<= 100%) 1861**
 
-**Soft core genes	(95% \<= strains \< 99%)	0**
+**Soft core genes (95% \<= strains \< 99%) 0**
 
-**Shell genes	(15% \<= strains \< 95%)	962**
+**Shell genes (15% \<= strains \< 95%) 962**
 
-**Cloud genes	(0% \<= strains \< 15%)	838**
+**Cloud genes (0% \<= strains \< 15%) 838**
 
-**Total genes	(0% \<= strains \<= 100%)	3661**
+**Total genes (0% \<= strains \<= 100%) 3661**
 
 Additionally, *Roary* produces a `gene_presence_absence.csv` file that can be opened in any spreadsheet software to manually explore the results. In this file, you will find information such as gene name and gene annotation, and, of course, whether a gene is present in a genome or not.
 
 Drop the *accessory_binary_genes.fa.newick* and *gene_presence_absence.csv* files in Phandango
 
-![](images/phandango roary.png){width="664"}
+![](images/phandango%20roary.png){width="664"}
 
 When you analyze your own data, you will need a phylogeny that represents the evolutionary history of your isolates. The inference of a phylogenetic tree is not part of roary's functions, but you can use the core gene alignment (file: `core_gene_alignment.aln`) as input to infer a tree.
 

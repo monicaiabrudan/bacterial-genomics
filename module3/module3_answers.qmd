@@ -1,7 +1,6 @@
 **Run ARIBA on all samples**
 
-Example script: create the following bash file:
-`mkdir /home/ubuntu/Data/ARIBA_run/run_ariba.sh`
+Example script: create the following bash file: `mkdir /home/ubuntu/Data/ARIBA_run/run_ariba.sh`
 
 Add the following lines of code:
 
