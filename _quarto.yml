@@ -21,7 +21,7 @@ website:
           - module7/module7.qmd
            #- microreact/microreact.qmd
            #- data-flo/data-flo.qmd
-          #- resources.qmd
+          - resources.qmd
 
 
   page-footer: 
