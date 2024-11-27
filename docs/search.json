@@ -11,7 +11,7 @@
     "href": "module6/module6.html",
     "title": "Module 6",
     "section": "",
-    "text": "ChatGPT for bioinformatics\nThis will work with a Pro subscription.\nThe purpose of this demo is to show how to merge CSV files produced by ARIBA Resfinder and Pathogenwatch, using ChatGPT.\nThe input files can be found here:\nAnd the output files can be found here:\nUpload the CSV files\n\nPrompt ChatGPT to merge the three files.\n\nThe three files have different number of rows!\n\nSelect only isolates that are present in all files, and are resistance to Ciprofloxacin."
+    "text": "ChatGPT for bioinformatics\nThis will work with a Pro subscription.\nThe purpose of this demo is to show how to merge CSV files produced by ARIBA Resfinder and Pathogenwatch, using ChatGPT.\nThe input files can be found here: https://github.com/monicaiabrudan/bacterial-genomics/tree/main/module6/input\nAnd the output files can be found here: https://github.com/monicaiabrudan/bacterial-genomics/tree/main/module6/output\nUpload the CSV files\n\nPrompt ChatGPT to merge the three files.\n\nThe three files have different number of rows!\n\nSelect only isolates that are present in all files, and are resistance to Ciprofloxacin."
   },
   {
     "objectID": "Syllabus.html",

@@ -8,9 +8,9 @@ This will work with a Pro subscription.
 
 The purpose of this demo is to show how to merge CSV files produced by ARIBA Resfinder and Pathogenwatch, using ChatGPT.
 
-The input files can be found here:
+The input files can be found here: <https://github.com/monicaiabrudan/bacterial-genomics/tree/main/module6/input>
 
-And the output files can be found here:
+And the output files can be found here: <https://github.com/monicaiabrudan/bacterial-genomics/tree/main/module6/output>
 
 Upload the CSV files
 
