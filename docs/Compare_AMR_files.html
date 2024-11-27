@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Module 5 – Bioinformatic methods for microbial genomics and transcriptomics, Cluj-Napoca, November 2024</title>
+<title>compare_amr_files – Bioinformatic methods for microbial genomics and transcriptomics, Cluj-Napoca, November 2024</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,27 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,6 +102,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -79,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">Bioinformatic methods for microbial genomics and transcriptomics, Cluj-Napoca, November 2024</span>
     </a>
   </div>
@@ -90,11 +127,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../agenda.html"> 
+    <a class="nav-link" href="./agenda.html"> 
 <span class="menu-text">Agenda</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -103,35 +140,35 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-training-materials">    
         <li>
-    <a class="dropdown-item" href="../module1/module1.html">
+    <a class="dropdown-item" href="./module1/module1.html">
  <span class="dropdown-text">Module 1</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../module2/module2.html">
+    <a class="dropdown-item" href="./module2/module2.html">
  <span class="dropdown-text">Module 2</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../module3/module3.html">
+    <a class="dropdown-item" href="./module3/module3.html">
  <span class="dropdown-text">Module 3</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../module4/module4.html">
+    <a class="dropdown-item" href="./module4/module4.html">
  <span class="dropdown-text">Module 4</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../module5/module5.html">
+    <a class="dropdown-item" href="./module5/module5.html">
  <span class="dropdown-text">Module 5</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../module6/module6.html">
+    <a class="dropdown-item" href="./module6/module6.html">
  <span class="dropdown-text">Module 6</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../module7/module7.html">
+    <a class="dropdown-item" href="./module7/module7.html">
  <span class="dropdown-text">Module 7</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="../resources.html">
+    <a class="dropdown-item" href="./resources.html">
  <span class="dropdown-text">Resources</span></a>
   </li>  
     </ul>
@@ -148,7 +185,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Module 5</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -173,73 +210,262 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Module 5</h1>
+
+
+
+<p><a href="https://colab.research.google.com/github/monicaiabrudan/bacterial-genomics/blob/main/Compare_AMR_files.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
+<div id="cell-1" class="cell" data-outputid="c18e2a5f-4adf-48a2-c804-ce7d45b4b3ec" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.colab <span class="im">import</span> files</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> io</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the files</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>resfinder_file <span class="op">=</span> files.upload()</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(io.StringIO(resfinder_file[<span class="st">'ARIBA_resfinder.csv'</span>].decode(<span class="st">'utf-8'</span>)))</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>pw_amr_file <span class="op">=</span> files.upload()</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(io.StringIO(resfinder_file[<span class="st">'PW_AMR_genes.csv'</span>].decode(<span class="st">'utf-8'</span>)))</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean Resfinder gene names</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>resfinder_genes <span class="op">=</span> {gene.replace(<span class="st">'.match'</span>, <span class="st">''</span>) <span class="cf">for</span> gene <span class="kw">in</span> resfinder_file.columns}</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Get PW AMR gene names</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>pw_amr_genes <span class="op">=</span> <span class="bu">set</span>(pw_amr_file.columns)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Find substrings</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>substr_in_resfinder <span class="op">=</span> {gene <span class="cf">for</span> gene <span class="kw">in</span> pw_amr_genes <span class="cf">if</span> <span class="bu">any</span>(gene <span class="kw">in</span> res_gene <span class="cf">for</span> res_gene <span class="kw">in</span> resfinder_genes)}</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"PW AMR genes that are substrings of Resfinder genes:"</span>, substr_in_resfinder)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+     <input type="file" id="files-93d6dec7-939c-4384-9110-fd68649be376" name="files[]" multiple="" disabled="" style="border:none">
+     <output id="result-93d6dec7-939c-4384-9110-fd68649be376">
+      Upload widget is only available when the cell has been executed in the
+      current browser session. Please rerun this cell to enable.
+      </output>
+      <script>// Copyright 2017 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+/**
+ * @fileoverview Helpers for google.colab Python module.
+ */
+(function(scope) {
+function span(text, styleAttributes = {}) {
+  const element = document.createElement('span');
+  element.textContent = text;
+  for (const key of Object.keys(styleAttributes)) {
+    element.style[key] = styleAttributes[key];
+  }
+  return element;
+}
+
+// Max number of bytes which will be uploaded at a time.
+const MAX_PAYLOAD_SIZE = 100 * 1024;
+
+function _uploadFiles(inputId, outputId) {
+  const steps = uploadFilesStep(inputId, outputId);
+  const outputElement = document.getElementById(outputId);
+  // Cache steps on the outputElement to make it available for the next call
+  // to uploadFilesContinue from Python.
+  outputElement.steps = steps;
+
+  return _uploadFilesContinue(outputId);
+}
+
+// This is roughly an async generator (not supported in the browser yet),
+// where there are multiple asynchronous steps and the Python side is going
+// to poll for completion of each step.
+// This uses a Promise to block the python side on completion of each step,
+// then passes the result of the previous step as the input to the next step.
+function _uploadFilesContinue(outputId) {
+  const outputElement = document.getElementById(outputId);
+  const steps = outputElement.steps;
+
+  const next = steps.next(outputElement.lastPromiseValue);
+  return Promise.resolve(next.value.promise).then((value) => {
+    // Cache the last promise value to make it available to the next
+    // step of the generator.
+    outputElement.lastPromiseValue = value;
+    return next.value.response;
+  });
+}
+
+/**
+ * Generator function which is called between each async step of the upload
+ * process.
+ * @param {string} inputId Element ID of the input file picker element.
+ * @param {string} outputId Element ID of the output display.
+ * @return {!Iterable<!Object>} Iterable of next steps.
+ */
+function* uploadFilesStep(inputId, outputId) {
+  const inputElement = document.getElementById(inputId);
+  inputElement.disabled = false;
+
+  const outputElement = document.getElementById(outputId);
+  outputElement.innerHTML = '';
+
+  const pickedPromise = new Promise((resolve) => {
+    inputElement.addEventListener('change', (e) => {
+      resolve(e.target.files);
+    });
+  });
+
+  const cancel = document.createElement('button');
+  inputElement.parentElement.appendChild(cancel);
+  cancel.textContent = 'Cancel upload';
+  const cancelPromise = new Promise((resolve) => {
+    cancel.onclick = () => {
+      resolve(null);
+    };
+  });
+
+  // Wait for the user to pick the files.
+  const files = yield {
+    promise: Promise.race([pickedPromise, cancelPromise]),
+    response: {
+      action: 'starting',
+    }
+  };
+
+  cancel.remove();
+
+  // Disable the input element since further picks are not allowed.
+  inputElement.disabled = true;
+
+  if (!files) {
+    return {
+      response: {
+        action: 'complete',
+      }
+    };
+  }
+
+  for (const file of files) {
+    const li = document.createElement('li');
+    li.append(span(file.name, {fontWeight: 'bold'}));
+    li.append(span(
+        `(${file.type || 'n/a'}) - ${file.size} bytes, ` +
+        `last modified: ${
+            file.lastModifiedDate ? file.lastModifiedDate.toLocaleDateString() :
+                                    'n/a'} - `));
+    const percent = span('0% done');
+    li.appendChild(percent);
+
+    outputElement.appendChild(li);
+
+    const fileDataPromise = new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        resolve(e.target.result);
+      };
+      reader.readAsArrayBuffer(file);
+    });
+    // Wait for the data to be ready.
+    let fileData = yield {
+      promise: fileDataPromise,
+      response: {
+        action: 'continue',
+      }
+    };
+
+    // Use a chunked sending to avoid message size limits. See b/62115660.
+    let position = 0;
+    do {
+      const length = Math.min(fileData.byteLength - position, MAX_PAYLOAD_SIZE);
+      const chunk = new Uint8Array(fileData, position, length);
+      position += length;
+
+      const base64 = btoa(String.fromCharCode.apply(null, chunk));
+      yield {
+        response: {
+          action: 'append',
+          file: file.name,
+          data: base64,
+        },
+      };
+
+      let percentDone = fileData.byteLength === 0 ?
+          100 :
+          Math.round((position / fileData.byteLength) * 100);
+      percent.textContent = `${percentDone}% done`;
+
+    } while (position < fileData.byteLength);
+  }
+
+  // All done.
+  yield {
+    response: {
+      action: 'complete',
+    }
+  };
+}
+
+scope.google = scope.google || {};
+scope.google.colab = scope.google.colab || {};
+scope.google.colab._files = {
+  _uploadFiles,
+  _uploadFilesContinue,
+};
+})(self);
+</script> 
+</div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">KeyboardInterrupt</span>                         Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-8-c48fb384338f&gt;</span> in <span class="ansi-cyan-fg">&lt;cell line: 6&gt;</span><span class="ansi-blue-fg">()</span>
+<span class="ansi-green-fg ansi-bold">      4</span> 
+<span class="ansi-green-fg ansi-bold">      5</span> <span class="ansi-red-fg"># Load the files</span>
+<span class="ansi-green-fg">----&gt; 6</span><span class="ansi-red-fg"> </span>resfinder_file <span class="ansi-blue-fg">=</span> files<span class="ansi-blue-fg">.</span>upload<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg ansi-bold">      7</span> df <span class="ansi-blue-fg">=</span> pd<span class="ansi-blue-fg">.</span>read_csv<span class="ansi-blue-fg">(</span>io<span class="ansi-blue-fg">.</span>StringIO<span class="ansi-blue-fg">(</span>resfinder_file<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">'ARIBA_resfinder.csv'</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">.</span>decode<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">'utf-8'</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg ansi-bold">      8</span> 
+
+<span class="ansi-green-fg">/usr/local/lib/python3.10/dist-packages/google/colab/files.py</span> in <span class="ansi-cyan-fg">upload</span><span class="ansi-blue-fg">(target_dir)</span>
+<span class="ansi-green-fg ansi-bold">     70</span>   """
+<span class="ansi-green-fg ansi-bold">     71</span> 
+<span class="ansi-green-fg">---&gt; 72</span><span class="ansi-red-fg">   </span>uploaded_files <span class="ansi-blue-fg">=</span> _upload_files<span class="ansi-blue-fg">(</span>multiple<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg ansi-bold">     73</span>   <span class="ansi-red-fg"># Mapping from original filename to filename as saved locally.</span>
+<span class="ansi-green-fg ansi-bold">     74</span>   local_filenames <span class="ansi-blue-fg">=</span> dict<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">/usr/local/lib/python3.10/dist-packages/google/colab/files.py</span> in <span class="ansi-cyan-fg">_upload_files</span><span class="ansi-blue-fg">(multiple)</span>
+<span class="ansi-green-fg ansi-bold">    162</span> 
+<span class="ansi-green-fg ansi-bold">    163</span>   <span class="ansi-red-fg"># First result is always an indication that the file picker has completed.</span>
+<span class="ansi-green-fg">--&gt; 164</span><span class="ansi-red-fg">   result = _output.eval_js(
+</span><span class="ansi-green-fg ansi-bold">    165</span>       'google.colab._files._uploadFiles("{input_id}", "{output_id}")'.format(
+<span class="ansi-green-fg ansi-bold">    166</span>           input_id<span class="ansi-blue-fg">=</span>input_id<span class="ansi-blue-fg">,</span> output_id<span class="ansi-blue-fg">=</span>output_id
+
+<span class="ansi-green-fg">/usr/local/lib/python3.10/dist-packages/google/colab/output/_js.py</span> in <span class="ansi-cyan-fg">eval_js</span><span class="ansi-blue-fg">(script, ignore_result, timeout_sec)</span>
+<span class="ansi-green-fg ansi-bold">     38</span>   <span class="ansi-green-fg">if</span> ignore_result<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg ansi-bold">     39</span>     <span class="ansi-green-fg">return</span>
+<span class="ansi-green-fg">---&gt; 40</span><span class="ansi-red-fg">   </span><span class="ansi-green-fg">return</span> _message<span class="ansi-blue-fg">.</span>read_reply_from_input<span class="ansi-blue-fg">(</span>request_id<span class="ansi-blue-fg">,</span> timeout_sec<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg ansi-bold">     41</span> 
+<span class="ansi-green-fg ansi-bold">     42</span> 
+
+<span class="ansi-green-fg">/usr/local/lib/python3.10/dist-packages/google/colab/_message.py</span> in <span class="ansi-cyan-fg">read_reply_from_input</span><span class="ansi-blue-fg">(message_id, timeout_sec)</span>
+<span class="ansi-green-fg ansi-bold">     94</span>     reply <span class="ansi-blue-fg">=</span> _read_next_input_message<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg ansi-bold">     95</span>     <span class="ansi-green-fg">if</span> reply <span class="ansi-blue-fg">==</span> _NOT_READY <span class="ansi-green-fg">or</span> <span class="ansi-green-fg">not</span> isinstance<span class="ansi-blue-fg">(</span>reply<span class="ansi-blue-fg">,</span> dict<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">---&gt; 96</span><span class="ansi-red-fg">       </span>time<span class="ansi-blue-fg">.</span>sleep<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">0.025</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg ansi-bold">     97</span>       <span class="ansi-green-fg">continue</span>
+<span class="ansi-green-fg ansi-bold">     98</span>     if (
+
+<span class="ansi-red-fg">KeyboardInterrupt</span>: </pre>
+</div>
+</div>
 </div>
 
 
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p>How to setup your Amazon EC machine</p>
-<ul>
-<li>Only attempt this if you have a bank card available.</li>
-</ul>
-<p>In your browser navigate to: https://aws.amazon.com/</p>
-<p>Create an AWS account</p>
-<p><img src="images/create aws account.png" class="img-fluid"></p>
-<p><img src="images/1.png" class="img-fluid" width="387"></p>
-<p><img src="images/2.png" class="img-fluid" width="403"></p>
-<p><img src="images/3.png" class="img-fluid" width="384"></p>
-<p><img src="images/5.png" class="img-fluid" width="286"></p>
-<p><img src="images/6.png" class="img-fluid" width="567"></p>
-<p><img src="images/7.png" class="img-fluid" width="567"></p>
-<p><img src="images/8.png" class="img-fluid" width="583"></p>
-<p><img src="images/9.png" class="img-fluid" width="421"></p>
-<p><img src="images/10.png" class="img-fluid" width="533"> <img src="images/11.png" class="img-fluid" width="507"> <img src="images/12.png" class="img-fluid" width="558"></p>
-<p><img src="images/13.png" class="img-fluid" width="290"></p>
-<p><img src="images/14.png" class="img-fluid" width="441"></p>
-<p><img src="images/15.png" class="img-fluid" width="505"></p>
-<p>Once your virtual machine is up and running, login via ssh, using your key.pem file.</p>
-<p><code>chmod 400 key.pem</code></p>
-<p><code>ssh -i key.pem ubuntu@xxx.xxx.xxx.xxx</code></p>
-<p>Where xxx.xxx.xxx.xxx is the IP of the virtual machine.</p>
-<p>Once logged in, change the password for the username ubuntu:</p>
-<p><code>sudo passwd ubuntu</code>&nbsp;</p>
-<p>Then, try to log in via the visual interface, by navigating to the IP address (xxx.xxx.xxx.xxx) in your browser.</p>
-<p><img src="images/16.png" class="img-fluid" width="280"></p>
-<section id="create-an-image" class="level2">
-<h2 class="anchored" data-anchor-id="create-an-image">Create an image</h2>
-<p><img src="images/19.png" class="img-fluid" width="668"></p>
-<p><img src="images/20.png" class="img-fluid" width="701"></p>
-<p><img src="images/21.png" class="img-fluid" width="148"></p>
-<p><img src="images/22.png" width="538" height="45"></p>
-</section>
-<section id="launch-instances-from-an-image" class="level2">
-<h2 class="anchored" data-anchor-id="launch-instances-from-an-image">Launch instances from an image</h2>
-<p><img src="images/23.png" class="img-fluid" width="475"></p>
-<p><img src="images/24.png" class="img-fluid" width="138"></p>
-</section>
-<section id="delete-the-aws-account" class="level2">
-<h2 class="anchored" data-anchor-id="delete-the-aws-account">Delete the AWS account</h2>
-<p>How to close your AWS account</p>
-<p><a href="https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-closing.html" class="uri">https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-closing.html</a></p>
-<p><img src="images/25.png" class="img-fluid" width="206"></p>
-<p><img src="images/26.png" width="123" height="33"></p>
-
-
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
