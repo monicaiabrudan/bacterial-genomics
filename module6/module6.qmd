@@ -27,3 +27,9 @@ The three files have different number of rows!
 Select only isolates that are present in all files, and are resistance to Ciprofloxacin.
 
 ![](images/4.png){width="606"}
+
+The selection of Ciprofloxacin resistant isolates is based on the column "Ciprofloxacin" in the AMR profiles files.
+
+**ChatGPT attempts to explain the genes that are responsible to Ciprofloxacin resistance, however, these are all wrong**
+
+![](images/5.png){width="731"}
