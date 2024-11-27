@@ -214,33 +214,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p><a href="https://colab.research.google.com/github/monicaiabrudan/bacterial-genomics/blob/main/Compare_AMR_files.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a></p>
-<div id="cell-1" class="cell" data-outputid="c18e2a5f-4adf-48a2-c804-ce7d45b4b3ec" data-execution_count="8">
+<div id="cell-1" class="cell" data-outputid="1b815d97-54d6-4bfe-950d-b87124f72285" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> google.colab <span class="im">import</span> files</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> io</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the files</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Upload files</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>resfinder_file <span class="op">=</span> files.upload()</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(io.StringIO(resfinder_file[<span class="st">'ARIBA_resfinder.csv'</span>].decode(<span class="st">'utf-8'</span>)))</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>pw_amr_file <span class="op">=</span> files.upload()</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(io.StringIO(resfinder_file[<span class="st">'PW_AMR_genes.csv'</span>].decode(<span class="st">'utf-8'</span>)))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the files</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the uploaded file name</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Uploaded files:"</span>, resfinder_file.keys())</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean Resfinder gene names</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>resfinder_genes <span class="op">=</span> {gene.replace(<span class="st">'.match'</span>, <span class="st">''</span>) <span class="cf">for</span> gene <span class="kw">in</span> resfinder_file.columns}</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the correct file name from the printed keys</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>filename <span class="op">=</span> <span class="bu">list</span>(resfinder_file.keys())[<span class="dv">0</span>]  <span class="co"># Automatically use the first uploaded file</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>df_res <span class="op">=</span> pd.read_csv(io.StringIO(resfinder_file[filename].decode(<span class="st">'utf-8'</span>)))</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Get PW AMR gene names</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>pw_amr_genes <span class="op">=</span> <span class="bu">set</span>(pw_amr_file.columns)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_res.head())</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Find substrings</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>substr_in_resfinder <span class="op">=</span> {gene <span class="cf">for</span> gene <span class="kw">in</span> pw_amr_genes <span class="cf">if</span> <span class="bu">any</span>(gene <span class="kw">in</span> res_gene <span class="cf">for</span> res_gene <span class="kw">in</span> resfinder_genes)}</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>pw_amr_file <span class="op">=</span> files.upload()</span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"PW AMR genes that are substrings of Resfinder genes:"</span>, substr_in_resfinder)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the files</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the uploaded file name</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Uploaded files:"</span>, pw_amr_file.keys())</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the correct file name from the printed keys</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>filename <span class="op">=</span> <span class="bu">list</span>(pw_amr_file.keys())[<span class="dv">0</span>]  <span class="co"># Automatically use the first uploaded file</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>df_pw <span class="op">=</span> pd.read_csv(io.StringIO(pw_amr_file[filename].decode(<span class="st">'utf-8'</span>)))</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the first few rows</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_pw.head())</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean Resfinder gene names</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>resfinder_genes <span class="op">=</span> {gene.replace(<span class="st">'.match'</span>, <span class="st">''</span>) <span class="cf">for</span> gene <span class="kw">in</span> df_res.columns}</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>resfinder_genes2 <span class="op">=</span> [w.replace(<span class="st">'_'</span>, <span class="st">''</span>) <span class="cf">for</span> w <span class="kw">in</span> resfinder_genes]</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span> (resfinder_genes2)</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Get PW AMR gene names</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>pw_amr_genes <span class="op">=</span> <span class="bu">set</span>(df_pw .columns)</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Find substrings</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>substr_in_resfinder <span class="op">=</span> {gene <span class="cf">for</span> gene <span class="kw">in</span> pw_amr_genes <span class="cf">if</span> <span class="bu">any</span>(gene <span class="kw">in</span> res_gene <span class="cf">for</span> res_gene <span class="kw">in</span> resfinder_genes2)}</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"PW AMR genes that are substrings of Resfinder genes:"</span>, substr_in_resfinder)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 
-     <input type="file" id="files-93d6dec7-939c-4384-9110-fd68649be376" name="files[]" multiple="" disabled="" style="border:none">
-     <output id="result-93d6dec7-939c-4384-9110-fd68649be376">
+     <input type="file" id="files-076c5b13-e054-4fe9-a1c5-a5d4f03da797" name="files[]" multiple="" disabled="" style="border:none">
+     <output id="result-076c5b13-e054-4fe9-a1c5-a5d4f03da797">
       Upload widget is only available when the cell has been executed in the
       current browser session. Please rerun this cell to enable.
       </output>
@@ -421,47 +443,218 @@ scope.google.colab._files = {
 })(self);
 </script> 
 </div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">KeyboardInterrupt</span>                         Traceback (most recent call last)
-<span class="ansi-green-fg">&lt;ipython-input-8-c48fb384338f&gt;</span> in <span class="ansi-cyan-fg">&lt;cell line: 6&gt;</span><span class="ansi-blue-fg">()</span>
-<span class="ansi-green-fg ansi-bold">      4</span> 
-<span class="ansi-green-fg ansi-bold">      5</span> <span class="ansi-red-fg"># Load the files</span>
-<span class="ansi-green-fg">----&gt; 6</span><span class="ansi-red-fg"> </span>resfinder_file <span class="ansi-blue-fg">=</span> files<span class="ansi-blue-fg">.</span>upload<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg ansi-bold">      7</span> df <span class="ansi-blue-fg">=</span> pd<span class="ansi-blue-fg">.</span>read_csv<span class="ansi-blue-fg">(</span>io<span class="ansi-blue-fg">.</span>StringIO<span class="ansi-blue-fg">(</span>resfinder_file<span class="ansi-blue-fg">[</span><span class="ansi-blue-fg">'ARIBA_resfinder.csv'</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">.</span>decode<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">'utf-8'</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg ansi-bold">      8</span> 
+<div class="cell-output cell-output-stdout">
+<pre><code>Saving ARIBA_resfinder.csv to ARIBA_resfinder (6).csv
+Uploaded files: dict_keys(['ARIBA_resfinder (6).csv'])
+        name aadD.match aph_2____Ia+.match blaZ_1.match bleO.match  \
+0  ERR017200         no                 no          yes         no   
+1  ERR030279         no                 no          yes         no   
+2  ERR031664         no                 no          yes         no   
+3  ERR033465         no                 no          yes         no   
+4  ERR033475         no                 no          yes         no   
 
-<span class="ansi-green-fg">/usr/local/lib/python3.10/dist-packages/google/colab/files.py</span> in <span class="ansi-cyan-fg">upload</span><span class="ansi-blue-fg">(target_dir)</span>
-<span class="ansi-green-fg ansi-bold">     70</span>   """
-<span class="ansi-green-fg ansi-bold">     71</span> 
-<span class="ansi-green-fg">---&gt; 72</span><span class="ansi-red-fg">   </span>uploaded_files <span class="ansi-blue-fg">=</span> _upload_files<span class="ansi-blue-fg">(</span>multiple<span class="ansi-blue-fg">=</span><span class="ansi-green-fg">True</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg ansi-bold">     73</span>   <span class="ansi-red-fg"># Mapping from original filename to filename as saved locally.</span>
-<span class="ansi-green-fg ansi-bold">     74</span>   local_filenames <span class="ansi-blue-fg">=</span> dict<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-
-<span class="ansi-green-fg">/usr/local/lib/python3.10/dist-packages/google/colab/files.py</span> in <span class="ansi-cyan-fg">_upload_files</span><span class="ansi-blue-fg">(multiple)</span>
-<span class="ansi-green-fg ansi-bold">    162</span> 
-<span class="ansi-green-fg ansi-bold">    163</span>   <span class="ansi-red-fg"># First result is always an indication that the file picker has completed.</span>
-<span class="ansi-green-fg">--&gt; 164</span><span class="ansi-red-fg">   result = _output.eval_js(
-</span><span class="ansi-green-fg ansi-bold">    165</span>       'google.colab._files._uploadFiles("{input_id}", "{output_id}")'.format(
-<span class="ansi-green-fg ansi-bold">    166</span>           input_id<span class="ansi-blue-fg">=</span>input_id<span class="ansi-blue-fg">,</span> output_id<span class="ansi-blue-fg">=</span>output_id
-
-<span class="ansi-green-fg">/usr/local/lib/python3.10/dist-packages/google/colab/output/_js.py</span> in <span class="ansi-cyan-fg">eval_js</span><span class="ansi-blue-fg">(script, ignore_result, timeout_sec)</span>
-<span class="ansi-green-fg ansi-bold">     38</span>   <span class="ansi-green-fg">if</span> ignore_result<span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg ansi-bold">     39</span>     <span class="ansi-green-fg">return</span>
-<span class="ansi-green-fg">---&gt; 40</span><span class="ansi-red-fg">   </span><span class="ansi-green-fg">return</span> _message<span class="ansi-blue-fg">.</span>read_reply_from_input<span class="ansi-blue-fg">(</span>request_id<span class="ansi-blue-fg">,</span> timeout_sec<span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg ansi-bold">     41</span> 
-<span class="ansi-green-fg ansi-bold">     42</span> 
-
-<span class="ansi-green-fg">/usr/local/lib/python3.10/dist-packages/google/colab/_message.py</span> in <span class="ansi-cyan-fg">read_reply_from_input</span><span class="ansi-blue-fg">(message_id, timeout_sec)</span>
-<span class="ansi-green-fg ansi-bold">     94</span>     reply <span class="ansi-blue-fg">=</span> _read_next_input_message<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg ansi-bold">     95</span>     <span class="ansi-green-fg">if</span> reply <span class="ansi-blue-fg">==</span> _NOT_READY <span class="ansi-green-fg">or</span> <span class="ansi-green-fg">not</span> isinstance<span class="ansi-blue-fg">(</span>reply<span class="ansi-blue-fg">,</span> dict<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
-<span class="ansi-green-fg">---&gt; 96</span><span class="ansi-red-fg">       </span>time<span class="ansi-blue-fg">.</span>sleep<span class="ansi-blue-fg">(</span><span class="ansi-cyan-fg">0.025</span><span class="ansi-blue-fg">)</span>
-<span class="ansi-green-fg ansi-bold">     97</span>       <span class="ansi-green-fg">continue</span>
-<span class="ansi-green-fg ansi-bold">     98</span>     if (
-
-<span class="ansi-red-fg">KeyboardInterrupt</span>: </pre>
+  cat_pC221_.match erm_C_.match mecA-.match  
+0               no           no         yes  
+1               no          yes         yes  
+2               no          yes         yes  
+3               no           no         yes  
+4               no          yes         yes  </code></pre>
 </div>
+<div class="cell-output cell-output-display">
+
+     <input type="file" id="files-73bd9b39-a151-4936-aa82-a4a174b3398f" name="files[]" multiple="" disabled="" style="border:none">
+     <output id="result-73bd9b39-a151-4936-aa82-a4a174b3398f">
+      Upload widget is only available when the cell has been executed in the
+      current browser session. Please rerun this cell to enable.
+      </output>
+      <script>// Copyright 2017 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+/**
+ * @fileoverview Helpers for google.colab Python module.
+ */
+(function(scope) {
+function span(text, styleAttributes = {}) {
+  const element = document.createElement('span');
+  element.textContent = text;
+  for (const key of Object.keys(styleAttributes)) {
+    element.style[key] = styleAttributes[key];
+  }
+  return element;
+}
+
+// Max number of bytes which will be uploaded at a time.
+const MAX_PAYLOAD_SIZE = 100 * 1024;
+
+function _uploadFiles(inputId, outputId) {
+  const steps = uploadFilesStep(inputId, outputId);
+  const outputElement = document.getElementById(outputId);
+  // Cache steps on the outputElement to make it available for the next call
+  // to uploadFilesContinue from Python.
+  outputElement.steps = steps;
+
+  return _uploadFilesContinue(outputId);
+}
+
+// This is roughly an async generator (not supported in the browser yet),
+// where there are multiple asynchronous steps and the Python side is going
+// to poll for completion of each step.
+// This uses a Promise to block the python side on completion of each step,
+// then passes the result of the previous step as the input to the next step.
+function _uploadFilesContinue(outputId) {
+  const outputElement = document.getElementById(outputId);
+  const steps = outputElement.steps;
+
+  const next = steps.next(outputElement.lastPromiseValue);
+  return Promise.resolve(next.value.promise).then((value) => {
+    // Cache the last promise value to make it available to the next
+    // step of the generator.
+    outputElement.lastPromiseValue = value;
+    return next.value.response;
+  });
+}
+
+/**
+ * Generator function which is called between each async step of the upload
+ * process.
+ * @param {string} inputId Element ID of the input file picker element.
+ * @param {string} outputId Element ID of the output display.
+ * @return {!Iterable<!Object>} Iterable of next steps.
+ */
+function* uploadFilesStep(inputId, outputId) {
+  const inputElement = document.getElementById(inputId);
+  inputElement.disabled = false;
+
+  const outputElement = document.getElementById(outputId);
+  outputElement.innerHTML = '';
+
+  const pickedPromise = new Promise((resolve) => {
+    inputElement.addEventListener('change', (e) => {
+      resolve(e.target.files);
+    });
+  });
+
+  const cancel = document.createElement('button');
+  inputElement.parentElement.appendChild(cancel);
+  cancel.textContent = 'Cancel upload';
+  const cancelPromise = new Promise((resolve) => {
+    cancel.onclick = () => {
+      resolve(null);
+    };
+  });
+
+  // Wait for the user to pick the files.
+  const files = yield {
+    promise: Promise.race([pickedPromise, cancelPromise]),
+    response: {
+      action: 'starting',
+    }
+  };
+
+  cancel.remove();
+
+  // Disable the input element since further picks are not allowed.
+  inputElement.disabled = true;
+
+  if (!files) {
+    return {
+      response: {
+        action: 'complete',
+      }
+    };
+  }
+
+  for (const file of files) {
+    const li = document.createElement('li');
+    li.append(span(file.name, {fontWeight: 'bold'}));
+    li.append(span(
+        `(${file.type || 'n/a'}) - ${file.size} bytes, ` +
+        `last modified: ${
+            file.lastModifiedDate ? file.lastModifiedDate.toLocaleDateString() :
+                                    'n/a'} - `));
+    const percent = span('0% done');
+    li.appendChild(percent);
+
+    outputElement.appendChild(li);
+
+    const fileDataPromise = new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        resolve(e.target.result);
+      };
+      reader.readAsArrayBuffer(file);
+    });
+    // Wait for the data to be ready.
+    let fileData = yield {
+      promise: fileDataPromise,
+      response: {
+        action: 'continue',
+      }
+    };
+
+    // Use a chunked sending to avoid message size limits. See b/62115660.
+    let position = 0;
+    do {
+      const length = Math.min(fileData.byteLength - position, MAX_PAYLOAD_SIZE);
+      const chunk = new Uint8Array(fileData, position, length);
+      position += length;
+
+      const base64 = btoa(String.fromCharCode.apply(null, chunk));
+      yield {
+        response: {
+          action: 'append',
+          file: file.name,
+          data: base64,
+        },
+      };
+
+      let percentDone = fileData.byteLength === 0 ?
+          100 :
+          Math.round((position / fileData.byteLength) * 100);
+      percent.textContent = `${percentDone}% done`;
+
+    } while (position < fileData.byteLength);
+  }
+
+  // All done.
+  yield {
+    response: {
+      action: 'complete',
+    }
+  };
+}
+
+scope.google = scope.google || {};
+scope.google.colab = scope.google.colab || {};
+scope.google.colab._files = {
+  _uploadFiles,
+  _uploadFilesContinue,
+};
+})(self);
+</script> 
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Saving PW_AMR_genes.csv to PW_AMR_genes (5).csv
+Uploaded files: dict_keys(['PW_AMR_genes (5).csv'])
+         NAME  aadD  aacA-aphD  mecA  blaZ  ermC  ermC_LP  dfrA
+0  SRR7653488     0          0     1     1     1        1     1
+1  SRR7653497     0          1     1     1     0        0     0
+2  ERR4635593     1          1     1     1     1        1     1
+3  ERR4783604     0          1     1     1     0        0     1
+4   ERR033465     0          0     1     1     0        0     0
+['ermC', 'name', 'mecA-', 'bleO', 'catpC221', 'aadD', 'blaZ1', 'aph2Ia+']
+PW AMR genes that are substrings of Resfinder genes: {'blaZ', 'aadD', 'ermC', 'mecA'}</code></pre>
 </div>
 </div>
 

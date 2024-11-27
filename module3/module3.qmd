@@ -222,3 +222,7 @@ Open the ARIBA summary files and compare them with the AMR genes and AMR SNPs fi
 -   Which tool produced more results? Why?
 
 -   Which tool would you use to report AMR in your collection of S. aureus?
+
+A Python script that compares the ARIBA Resfinder summary result with the Pathogenwatch AMR genes result is available on Github: <https://github.com/monicaiabrudan/bacterial-genomics/blob/main/Compare_AMR_files.ipynb>
+
+The input files can be found here: <https://github.com/monicaiabrudan/bacterial-genomics/tree/main/Compare_AMR_files>
