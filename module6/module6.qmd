@@ -2,6 +2,6 @@
 title: "Module 6"
 ---
 
-Tools for bioinformatics
+ChatGPT for bioinformatics
 
--   ChatGPT
+
