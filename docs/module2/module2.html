@@ -194,6 +194,11 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="module-2-data-retrieval-read-qc-genome-assemblies-and-assemblies-qc" class="level3">
 <h3 class="anchored" data-anchor-id="module-2-data-retrieval-read-qc-genome-assemblies-and-assemblies-qc">Module 2: Data retrieval, Read QC, Genome Assemblies and Assemblies QC</h3>
+<section id="file-formats" class="level4">
+<h4 class="anchored" data-anchor-id="file-formats">File formats</h4>
+<p>Read more here:</p>
+<p><a href="https://genome.ucsc.edu/FAQ/FAQformat.html" class="uri">https://genome.ucsc.edu/FAQ/FAQformat.html</a></p>
+</section>
 <section id="connect-to-your-amazon-ec2-instance" class="level4">
 <h4 class="anchored" data-anchor-id="connect-to-your-amazon-ec2-instance">Connect to your Amazon EC2 instance</h4>
 <p>Follow the steps in Module 1 to connect to your remote virtual machine.</p>
@@ -319,6 +324,12 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="genome-assembly" class="level2">
 <h2 class="anchored" data-anchor-id="genome-assembly">Genome assembly</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/N50.jpg" class="img-fluid figure-img"></p>
+<figcaption>An example of the N50 metric</figcaption>
+</figure>
+</div>
 <p><strong>The Velvet assembler</strong></p>
 <p><strong>Velvet</strong> is an algorithm package that has been designed to deal with <em>de novo</em> <a href="https://en.wikipedia.org/wiki/Genome_assembly" title="Genome assembly">genome assembly</a> and short read <a href="https://en.wikipedia.org/wiki/Sequence_alignment" title="Sequence alignment">sequencing alignments</a>. This is achieved through the manipulation of <a href="https://en.wikipedia.org/wiki/De_Bruijn_graph" title="De Bruijn graph">de Bruijn graphs</a> for genomic sequence assembly via the removal of errors and the simplification of repeated regions.</p>
 <p><strong>Run Velvet</strong></p>
@@ -440,6 +451,14 @@ Sequences</code></pre>
 </ul>
 <p>Note, this method may take over an hour to run on the VMs - check with an instructor before running.</p>
 <p><code>unicycler -t 4 -1/home/ubuntu/Data/G18252308/illumina/ERR4635696_1.fastq.gz -2 /home/ubuntu/Data/G18252308/illumina/ERR4635696_2.fastq.gz -l /home/ubuntu/Data/G18252308/nanopore/ERR8187245.fastq.gz -o ERR8187245.unicycler.hybrid</code></p>
+</section>
+<section id="compare-velvet-and-spades-assemblers" class="level2">
+<h2 class="anchored" data-anchor-id="compare-velvet-and-spades-assemblers">Compare Velvet and SPADES assemblers</h2>
+<p>Run SPADES (with Unicycler)</p>
+<p><code>unicycler -t 4 -1 /home/ubuntu/Data/G18255819/illumina/ERR4784794_1.fastq.gz -2 /home/ubuntu/Data/G18255819/illumina/ERR4784794_2.fastq.gz -o ERR4784794.short</code></p>
+<p>View the SPADES assembly metrics in Quast</p>
+<p><img src="images/quast _ spades.png" class="img-fluid" width="734"></p>
+<p>How do these metrics compare with the results you got from the Velvet assembler?</p>
 </section>
 <section id="genome-annotation-with-prokka" class="level2">
 <h2 class="anchored" data-anchor-id="genome-annotation-with-prokka">Genome annotation with Prokka</h2>

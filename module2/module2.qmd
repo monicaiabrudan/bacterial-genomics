@@ -4,6 +4,12 @@ title: "Module 2"
 
 ### Module 2: Data retrieval, Read QC, Genome Assemblies and Assemblies QC
 
+#### File formats
+
+Read more here:
+
+<https://genome.ucsc.edu/FAQ/FAQformat.html>
+
 #### Connect to your Amazon EC2 instance
 
 Follow the steps in Module 1 to connect to your remote virtual machine.
@@ -155,6 +161,8 @@ Or from the command line.
 `wget https://www.ebi.ac.uk/ena/browser/api/fasta/CP018629.1 -O - >> GCA_002895385-chromosomes.fasta`
 
 ## Genome assembly
+
+![An example of the N50 metric](images/N50.jpg)
 
 **The Velvet assembler**
 
@@ -323,6 +331,18 @@ In the command below we:
 Note, this method may take over an hour to run on the VMs - check with an instructor before running.
 
 `unicycler -t 4 -1/home/ubuntu/Data/G18252308/illumina/ERR4635696_1.fastq.gz -2 /home/ubuntu/Data/G18252308/illumina/ERR4635696_2.fastq.gz -l /home/ubuntu/Data/G18252308/nanopore/ERR8187245.fastq.gz -o ERR8187245.unicycler.hybrid`
+
+## Compare Velvet and SPADES assemblers
+
+Run SPADES (with Unicycler)
+
+`unicycler -t 4 -1 /home/ubuntu/Data/G18255819/illumina/ERR4784794_1.fastq.gz -2 /home/ubuntu/Data/G18255819/illumina/ERR4784794_2.fastq.gz -o ERR4784794.short`
+
+View the SPADES assembly metrics in Quast
+
+![](images/quast _ spades.png){width="734"}
+
+How do these metrics compare with the results you got from the Velvet assembler?
 
 ## Genome annotation with Prokka
 
