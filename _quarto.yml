@@ -19,8 +19,7 @@ website:
           - module5/module5.qmd
           - module6/module6.qmd
           - module7/module7.qmd
-           #- microreact/microreact.qmd
-           #- data-flo/data-flo.qmd
+          - module8/module8.qmd
           - resources.qmd
 
 
