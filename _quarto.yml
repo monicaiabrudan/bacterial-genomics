@@ -20,6 +20,7 @@ website:
           - module6/module6.qmd
           - module7/module7.qmd
           - module8/module8.qmd
+          - Assessment/assessment.qmd
           - resources.qmd
 
 
