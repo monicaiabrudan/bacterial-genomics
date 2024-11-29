@@ -4,6 +4,10 @@
 title: "Module 8"
 ---
 
+-   This exercise used tools developed by The Centre for Genomic Pathogen Surveillance (CGPS) at University of Oxford
+
+-   Similar exercises have been developed as part of T3Connect <https://wcscourses.github.io/T3connectResources/>
+
 For Microreact documentation, go to <https://docs.microreact.org/>
 
 ### *Required internet browsers: Google Chrome or Mozilla Firefox*
